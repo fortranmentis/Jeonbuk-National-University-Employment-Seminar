@@ -22,3 +22,31 @@
 
 .timeline-photo-images{position:absolute;right:5.5cqw;top:12cqw;width:41cqw;display:grid;grid-template-columns:1fr 1fr;gap:1.4cqw}.timeline-photo:has(.timeline-photo-images) .timeline-list{width:46%}.timeline-photo-images figure{margin:0}.timeline-photo-images img{display:block;width:100%;height:29cqw;object-fit:contain;border-radius:.8cqw}.timeline-photo-images figcaption{font-size:1.1cqw;text-align:center;color:var(--muted);margin-top:1cqw}
 @media(max-width:700px){.timeline-photo-images{position:static;width:100%;margin-top:20px;gap:14px}.timeline-photo:has(.timeline-photo-images) .timeline-list{width:100%}.timeline-photo-images img{height:60cqw}.timeline-photo-images figcaption{font-size:3.5cqw;margin-top:10px}}
+
+.timeline-photo:has(.timeline-photo-images) .timeline-list{width:42%}
+.timeline-photo-images{width:47cqw;grid-template-columns:1.3fr 1fr;gap:1.4cqw;top:13cqw}
+.timeline-photo-images img{height:30cqw}
+.graduate-advice .word-list{display:grid;grid-template-columns:1fr;gap:1.1cqw}
+.graduate-advice .word-list li{word-break:keep-all;overflow-wrap:normal}
+.ais-case .tool-section{margin-top:1cqw}
+.ais-case .tool-scope{font-size:.9cqw;margin-bottom:.6cqw!important}
+.ais-case .tool-strip{gap:1.5cqw}
+.ais-case .tool-item{min-width:10cqw;gap:.5cqw}
+.ais-case .tool-role{font-size:1cqw}
+@media(max-width:700px){
+.timeline-photo:has(.timeline-photo-images) .timeline-list{width:100%}
+.timeline-photo-images{width:100%;grid-template-columns:1.3fr 1fr}
+.timeline-photo-images img{height:60cqw}
+.graduate-advice .word-list{gap:18px}
+.ais-case .tool-section{margin-top:18px}
+.ais-case .tool-scope{font-size:12px;margin-bottom:12px!important}
+.ais-case .tool-strip{gap:16px}
+.ais-case .tool-item{min-width:100px;gap:8px}
+.ais-case .tool-role{font-size:13px}
+}
+
+#slide-index{display:block}
+.index-chapter{margin:24px 0}
+.index-chapter h3{font-size:16px;color:var(--blue);margin:0 0 6px}
+.index-entries{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+@media(max-width:700px){.index-entries{grid-template-columns:1fr}}

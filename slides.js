@@ -133,7 +133,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "제가 맡는 일은\n해양·기상 빅데이터를 연결하는 일",
     "layout": "role",
-    "chapter": "회사와 직무",
+    "chapter": "빅데이터 실무",
     "eyebrow": "GeoSR · 공간융합부 · Data Engineer",
     "items": [
       [
@@ -351,7 +351,31 @@ window.SEMINAR_SLIDES = [
       "항로·정박지 결합",
       "규칙으로 상태 후보 표현"
     ],
-    "usage": "해상교통·해양활동 연구자 → 정박·정류·항로 이탈 후보를 지도에서 검토"
+    "usage": "해상교통·해양활동 연구자 → 정박·정류·항로 이탈 후보를 지도에서 검토",
+    "tools": [
+      {
+        "name": "Python",
+        "logo": "python-logo.svg",
+        "role": "처리·자동화",
+        "url": "https://www.python.org/",
+        "showName": false
+      },
+      {
+        "name": "pandas",
+        "logo": "pandas-logo.svg",
+        "role": "표·시계열 처리",
+        "url": "https://pandas.pydata.org/",
+        "showName": false
+      },
+      {
+        "name": "NumPy",
+        "logo": "numpy-logo.svg",
+        "role": "배열·수치 계산",
+        "url": "https://numpy.org/",
+        "showName": false
+      }
+    ],
+    "toolScope": "AIS 분석에 사용한 도구"
   },
   {
     "title": "데이터 업무에도\n현장이 있습니다",
@@ -391,7 +415,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "실무에서 만나게 되는 것,\n학교에서도 겪어보지 않았나요?",
     "layout": "mapping",
-    "chapter": "AI와 실무",
+    "chapter": "AI 활용과 프로젝트",
     "items": [
       [
         "요구가 흐릿한 고객",
@@ -413,7 +437,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "초안은 AI가,\n판단과 수정은 내가",
     "layout": "mapping",
-    "chapter": "AI와 빅데이터",
+    "chapter": "AI 활용과 프로젝트",
     "eyebrow": "Claude · GPT · 로컬 모델 | 현업 경험과 공개 사례",
     "items": [
       [
@@ -449,7 +473,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "‘그럴듯한 비약’을\n그냥 넘기지 마세요",
     "layout": "mapping",
-    "chapter": "AI와 실무",
+    "chapter": "AI 활용과 프로젝트",
     "eyebrow": "가상 분석 예시",
     "subtitle": "출처가 맞아도, 결론까지 맞는 것은 아닙니다",
     "items": [
@@ -473,7 +497,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "노트북으로 시작해,\n더 적은 자원으로 같은 결과를",
     "layout": "timeline",
-    "chapter": "AI와 실무",
+    "chapter": "AI 활용과 프로젝트",
     "subtitle": "공공자료를 분석했다면, 다음에는 처리 방식을 개선해보세요",
     "items": [
       [
@@ -533,7 +557,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "관심을\n실제로 쓰는 도구로",
     "layout": "apps",
-    "chapter": "AI와 빅데이터",
+    "chapter": "AI 활용과 프로젝트",
     "images": [
       [
         "gputerm-terminal.webp",
@@ -568,7 +592,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "결과물 완성은 기본,\n프로젝트를 운영하는 힘까지",
     "layout": "flow",
-    "chapter": "AI와 실무",
+    "chapter": "AI 활용과 프로젝트",
     "eyebrow": "PM · AI 에이전트 · AX",
     "subtitle": "과제는 범위·일정·소통·검증을 연습할 기회입니다",
     "items": [
@@ -595,7 +619,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "과제를 ‘잘’하기\n좋은 시대입니다",
     "layout": "mapping",
-    "chapter": "다음 행동",
+    "chapter": "AI 활용과 프로젝트",
     "eyebrow": "Codex · Claude · Gemini · Antigravity",
     "subtitle": "학생일 때 충분히 실험하고, 실무에서는 효율을 높이세요",
     "items": [
@@ -619,7 +643,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "GeoSR은\n어떤 회사인가요?",
     "layout": "company",
-    "chapter": "회사와 직무",
+    "chapter": "회사 소개와 채용",
     "eyebrow": "GEOSYSTEM RESEARCH CORPORATION",
     "subtitle": "해양·연안·하천의 현상을 조사하고,\n분석·예측해 활용 가능한 정보로 연결합니다",
     "items": [
@@ -640,7 +664,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "환경 문제를 다루는\n여러 가지 역할",
     "layout": "flow",
-    "chapter": "회사와 직무",
+    "chapter": "회사 소개와 채용",
     "items": [
       [
         "관측",
@@ -666,7 +690,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "같은 전공에서\n여러 직무로",
     "layout": "roles",
-    "chapter": "취업 준비",
+    "chapter": "회사 소개와 채용",
     "items": [
       [
         "현장·관측",
@@ -701,7 +725,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "채용은\n이렇게 진행됩니다",
     "layout": "flow",
-    "chapter": "취업 준비",
+    "chapter": "회사 소개와 채용",
     "items": [
       [
         "01",
@@ -732,7 +756,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "신입 연봉 안내",
     "layout": "salary",
-    "chapter": "취업 준비",
+    "chapter": "회사 소개와 채용",
     "items": [
       [
         "학사",
@@ -752,7 +776,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "입사 후에도\n배움을 이어갈 수 있습니다",
     "layout": "statement",
-    "chapter": "취업 준비",
+    "chapter": "회사 소개와 채용",
     "eyebrow": "협업과 대학원 진학 지원",
     "subtitle": "약 200명 규모의 조직에서 석박사 전문인력과 협업하고,\n석사·박사 진학 지원 제도를 활용할 수 있습니다",
     "notes": "사용자는 R&D 약 200명 규모와 석박사 협업·학위 지원을 설명했습니다. PPT는 전체 임직원 202명(2026.08), 석사58·박사수료11·박사26, 직원 학자금 지원을 명시합니다. 집계 범위 차이가 있어 R&D 인원 수나 전체 인력의 대다수가 석박사라고 단정하지 않습니다. 발표자의 느낀 점으로 배울 기회가 많다는 경험을 설명합니다. 화면에서 자료·출처로 옮긴 안내: 지원 대상·등록금 범위·승인 및 근속 조건 등은 회사 규정에 따릅니다",
@@ -761,7 +785,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "일하는 환경도\n함께 살펴보세요",
     "layout": "mapping",
-    "chapter": "회사 소개",
+    "chapter": "회사 소개와 채용",
     "eyebrow": "GeoSR 주요 복리후생",
     "items": [
       [
@@ -788,7 +812,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "면접과 자소서도,\n혼자 준비하지 마세요",
     "layout": "mapping",
-    "chapter": "취업 준비",
+    "chapter": "취업 준비와 실행",
     "items": [
       [
         "면접 강의",
@@ -819,7 +843,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "자격증도\n목표 직무에 맞춰",
     "layout": "credentials",
-    "chapter": "취업 준비",
+    "chapter": "취업 준비와 실행",
     "items": [
       [
         "발표자 보유",
@@ -850,7 +874,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "진로별 준비 예시,\n내 경로를 골라보세요",
     "layout": "mapping",
-    "chapter": "다음 행동",
+    "chapter": "취업 준비와 실행",
     "items": [
       [
         "사기업",
@@ -877,7 +901,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "공고와 회사 이야기를\n함께 읽어보세요",
     "layout": "mapping",
-    "chapter": "다음 행동",
+    "chapter": "취업 준비와 실행",
     "items": [
       [
         "채용공고",
@@ -928,7 +952,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "대학생활을 정리하면,\n포트폴리오의 재료가 됩니다",
     "layout": "mapping",
-    "chapter": "다음 행동",
+    "chapter": "취업 준비와 실행",
     "items": [
       [
         "모두 적어보기",
@@ -959,8 +983,8 @@ window.SEMINAR_SLIDES = [
   },
   {
     "title": "R&D로 가고 싶다면,\n석사 진학도 추천합니다",
-    "layout": "words",
-    "chapter": "다음 행동",
+    "layout": "graduate-advice",
+    "chapter": "취업 준비와 실행",
     "subtitle": "관심 주제를 깊게 연구하고,\n분석·실험·논문 작성 경험을 쌓는 선택",
     "items": [
       "희망 R&D 공고의 학위 요건부터 확인하기",
@@ -972,7 +996,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "앞으로 8주,\n내 경로에 맞춰 준비하기",
     "layout": "timeline",
-    "chapter": "다음 행동",
+    "chapter": "취업 준비와 실행",
     "items": [
       [
         "1–2주",
@@ -997,7 +1021,7 @@ window.SEMINAR_SLIDES = [
   {
     "title": "과학이라는 기틀 위에,\n빅데이터라는 현실을 구현하기",
     "layout": "closing",
-    "chapter": "다음 행동",
+    "chapter": "마무리",
     "subtitle": "후배들에게 전하고 싶은 네 가지",
     "links": [
       [

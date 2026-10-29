@@ -6,16 +6,19 @@
   let index = 0, reading = false, running = false, started = 0, total = 0, lastFocus;
   const dialogs = ['overview', 'help', 'resources'].map($);
   const lines = value => escape(value).replace(/\n/g, '<br>');
-  function links(s) {
+  function toolStrip(s) {
     const tools = s.tools ? `<div class="tool-section"><p class="tool-scope">${escape(s.toolScope)}</p><div class="tool-strip">${s.tools.map(t=>`<a class="tool-item" href="${escape(t.url)}" target="_blank" rel="noopener noreferrer"><span class="tool-brand"><img src="assets/${escape(t.logo)}" alt="${t.showName?'':escape(t.name)}">${t.showName?`<strong>${escape(t.name)}</strong>`:''}</span><span class="tool-role">${escape(t.role)}</span></a>`).join('')}</div></div>` : '';
-    return tools + (s.links ? `<div class="slide-links">${s.links.map(([label,url]) => `<a href="${escape(url)}"${url.startsWith('https:') || url.startsWith('assets/') ? ' target="_blank" rel="noopener noreferrer"' : ''}>${escape(label)}</a>`).join('')}</div>` : '');
+    return tools;
+  }
+  function links(s, includeTools = true) {
+    return (includeTools ? toolStrip(s) : '') + (s.links ? `<div class="slide-links">${s.links.map(([label,url]) => `<a href="${escape(url)}"${url.startsWith('https:') || url.startsWith('assets/') ? ' target="_blank" rel="noopener noreferrer"' : ''}>${escape(label)}</a>`).join('')}</div>` : '');
   }
   function heading(s, i) {
     return `${s.eyebrow ? `<p class="eyebrow">${escape(s.eyebrow)}</p>` : ''}<${i ? 'h2' : 'h1'} id="title-${i+1}">${escape(s.title)}</${i ? 'h2' : 'h1'}>${s.subtitle ? `<p class="subtitle">${lines(s.subtitle)}</p>` : ''}`;
   }
   function list(s, kind) {
     if (!s.items) return '';
-    if (kind === 'words' || kind === 'company' || kind === 'qa' || kind === 'research') return `<ul class="word-list">${s.items.map(x => `<li>${escape(x)}</li>`).join('')}</ul>`;
+    if (kind === 'graduate-advice' || kind === 'words' || kind === 'company' || kind === 'qa' || kind === 'research') return `<ul class="word-list">${s.items.map(x => `<li>${escape(x)}</li>`).join('')}</ul>`;
     if (kind === 'timeline' || kind === 'timeline-photo') return `<div class="timeline-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${escape(b)}</p></div>`).join('')}</div>`;
     if (kind === 'salary') return `<div class="salary-pair">${s.items.map(([a,b,c])=>`<div><p class="degree">${escape(a)}</p><strong>${escape(b)}</strong><p class="unit">${escape(c)}</p></div>`).join('')}</div>`;
     if (['mapping','role','roles','credentials','service-photo'].includes(kind)) return `<div class="role-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${lines(b)}</p></div>`).join('')}</div>`;
@@ -28,8 +31,8 @@
     let content = heading(s,i) + list(s,s.layout) + links(s);
     if (s.layout === 'ais-case') content = heading(s,i)
       + `<div class="case-metrics">${s.metrics.map(([value,label])=>`<div><strong>${escape(value)}</strong><p>${escape(label)}</p></div>`).join('')}</div>`
-      + `<div class="case-comparison"><div class="case-input"><h3>처리 전 · 위치·시간 기록</h3><div class="case-fields" aria-label="입력 필드 개념도">${s.inputFields.map(field=>`<p>${escape(field)}</p>`).join('')}</div><ol>${s.processing.map(step=>`<li>${escape(step)}</li>`).join('')}</ol></div><span class="case-arrow" aria-hidden="true">→</span><figure><figcaption>처리 후 · 상태 후보 시각화</figcaption><a href="assets/${escape(s.image)}" target="_blank" rel="noopener noreferrer"><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy"></a></figure></div>`
-      + `<p class="case-usage"><strong>연구 활용</strong> ${escape(s.usage)}</p>` + links(s);
+      + `<div class="case-comparison"><div class="case-input"><h3>처리 전 · 위치·시간 기록</h3><div class="case-fields" aria-label="입력 필드 개념도">${s.inputFields.map(field=>`<p>${escape(field)}</p>`).join('')}</div><ol>${s.processing.map(step=>`<li>${escape(step)}</li>`).join('')}</ol>${toolStrip(s)}</div><span class="case-arrow" aria-hidden="true">→</span><figure><figcaption>처리 후 · 상태 후보 시각화</figcaption><a href="assets/${escape(s.image)}" target="_blank" rel="noopener noreferrer"><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy"></a></figure></div>`
+      + `<p class="case-usage"><strong>연구 활용</strong> ${escape(s.usage)}</p>` + links(s, false);
     if (s.layout === 'timeline-photo') content += s.images ? `<div class="timeline-photo-images">${s.images.map(([src,alt,caption])=>`<figure><img src="assets/${escape(src)}" alt="${escape(alt)}" loading="lazy"><figcaption>${escape(caption)}</figcaption></figure>`).join('')}</div>` : `<figure class="timeline-photo-image"><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy"></figure>`;
     if (s.layout === 'research' || s.layout === 'service-photo') content = `<div>${content}</div><figure><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy" decoding="async"></figure>`;
     if (s.layout === 'duo') content = heading(s,i) + pictures(s) + links(s);
@@ -40,7 +43,12 @@
     return `<section class="slide ${escape(s.layout)}" id="slide-${i+1}" data-slide="${i+1}" aria-labelledby="title-${i+1}"${s.image && ['photo','cover'].includes(s.layout) ? ` style="--photo:url('assets/${escape(s.image)}')"` : ''}${i ? ' hidden' : ''}>${content}</section>`;
   }).join('');
   const panels = [...document.querySelectorAll('.slide')];
-  $('slide-index').innerHTML = slides.map((s,i)=>`<button data-go="${i}"><span>${String(i+1).padStart(2,'0')}</span>${escape(s.title.replace(/\n/g,' '))}</button>`).join('');
+  const chapters = [];
+  slides.forEach((s,i) => {
+    if (chapters.at(-1)?.name !== s.chapter) chapters.push({name:s.chapter, entries:[]});
+    chapters.at(-1).entries.push({slide:s,index:i});
+  });
+  $('slide-index').innerHTML = chapters.map((chapter,chapterIndex)=>`<section class="index-chapter"><h3>${String(chapterIndex+1).padStart(2,'0')} / ${escape(chapter.name)}</h3><div class="index-entries">${chapter.entries.map(({slide:s,index:i})=>`<button data-go="${i}"><span>${String(i+1).padStart(2,'0')}</span>${escape(s.title.replace(/\n/g,' '))}</button>`).join('')}</div></section>`).join('');
   function notesUpdate() {
     const s = slides[index];
     $('notes-title').textContent = s.title.replace(/\n/g,' ');
