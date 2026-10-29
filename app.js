@@ -7,7 +7,8 @@
   const dialogs = ['overview', 'help', 'resources'].map($);
   const lines = value => escape(value).replace(/\n/g, '<br>');
   function links(s) {
-    return s.links ? `<div class="slide-links">${s.links.map(([label,url]) => `<a href="${escape(url)}"${url.startsWith('https:') || url.startsWith('assets/') ? ' target="_blank" rel="noopener noreferrer"' : ''}>${escape(label)}</a>`).join('')}</div>` : '';
+    const tools = s.tools ? `<div class="tool-section"><p class="tool-scope">${escape(s.toolScope)}</p><div class="tool-strip">${s.tools.map(t=>`<a class="tool-item" href="${escape(t.url)}" target="_blank" rel="noopener noreferrer"><span class="tool-brand"><img src="assets/${escape(t.logo)}" alt="${t.showName?'':escape(t.name)}">${t.showName?`<strong>${escape(t.name)}</strong>`:''}</span><span class="tool-role">${escape(t.role)}</span></a>`).join('')}</div></div>` : '';
+    return tools + (s.links ? `<div class="slide-links">${s.links.map(([label,url]) => `<a href="${escape(url)}"${url.startsWith('https:') || url.startsWith('assets/') ? ' target="_blank" rel="noopener noreferrer"' : ''}>${escape(label)}</a>`).join('')}</div>` : '');
   }
   function heading(s, i) {
     return `${s.eyebrow ? `<p class="eyebrow">${escape(s.eyebrow)}</p>` : ''}<${i ? 'h2' : 'h1'} id="title-${i+1}">${escape(s.title)}</${i ? 'h2' : 'h1'}>${s.subtitle ? `<p class="subtitle">${lines(s.subtitle)}</p>` : ''}`;

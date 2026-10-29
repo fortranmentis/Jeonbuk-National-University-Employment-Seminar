@@ -13,6 +13,7 @@ for(const s of slides){
  if(!s.title||!s.chapter||!s.notes)throw Error('Missing slide content');
  if(s.image){if(!s.alt)throw Error('Image alt required');assets.add(s.image);}
  for(const [src,alt]of s.images??[]){if(!alt)throw Error('Image alt required');assets.add(src);}
+ for(const t of s.tools??[]){if(!t.name||!t.role||!t.url.startsWith('https://'))throw Error('Missing tool description');assets.add(t.logo);}
  for(const [label,url]of s.links??[]){if(!label)throw Error('Link label required');if(url.startsWith('assets/'))assets.add(url.slice(7));else if(!url.startsWith('https://')&&!url.startsWith('#'))throw Error('Unexpected URL');}
 }
 for(const asset of assets)if(!fs.existsSync(path.join(root,'assets',asset)))throw Error('Missing '+asset);

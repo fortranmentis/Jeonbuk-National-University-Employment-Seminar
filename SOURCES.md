@@ -88,3 +88,19 @@
 - AI 초안→사람의 맥락·표현 수정→PoC/MVP→검증은 발표자의 제안입니다. 전체 업계 PM 관행에 대한 통계적 주장이나 모든 과제의 학습 목적을 PM 하나로 제한하는 설명이 아닙니다.
 - Codex·Claude·Gemini·Antigravity는 학습 도구 예시이며 가격·모델 순위·학교별 무료 제공을 보증하지 않습니다. [Antigravity 공식 사이트](https://antigravity.google/)에서 제품 명칭을 확인했습니다. “학교에서 Gemini 지원을 받나요?”는 청중 질문으로만 사용합니다.
 - README.md·코드·자료 버전·실행 조건·측정값·산출물을 남겨 재실행할 수 있게 합니다. 총 37화면(발표 36 + Q&A 1), 발표 50분 + Q&A 10분. AIS 사례 260초는 유지했습니다. 인쇄 테스트는 생략합니다.
+
+## 순서 변경·도구 로고·SQLD (2026-10-29)
+
+- 발표자는 대학생활 이후 회사 소개보다 먼저 실무 경험과 AI·PM 조언을 설명합니다. 회사 소개는 23–24번으로 이동했습니다. 화면 수와 50+10분은 유지합니다.
+- SQLD(SQL 개발자)는 [DataQ 안내](https://www.dataq.or.kr/www/sub/a_04.do)로 연결한 준비 후보입니다. 발표자 보유 자격·기사 자격·제품별 인증으로 소개하지 않습니다.
+- [Polars Lazy API](https://docs.pola.rs/user-guide/lazy/): 지연 실행·열 선택·필터 최적화 등을 학습할 도구로 제시합니다. 해당 업무의 사용 이력이나 다른 도구 대비 보편적 성능 우위를 주장하지 않습니다.
+- pandas·NumPy는 연결된 공개 통계 분석 코드에 import가 있으며 표·집계와 배열·수치 계산으로 역할을 소개합니다. Python·PostgreSQL은 기존 파이프라인 자료처리·적재 맥락을 유지합니다.
+- 공식 로고는 색상·비율을 변경하지 않고 오프라인에서도 보이도록 로컬 자산으로 보관합니다. 후원·인증을 의미하지 않으며 각 상표 권리는 권리자에게 있습니다.
+
+| 자산 | 공식 출처 |
+|---|---|
+| `python-logo.svg` | [PSF 로고 안내](https://www.python.org/community/logos/) · [원본](https://www.python.org/static/community_logos/python-logo-generic.svg) |
+| `pandas-logo.svg` | [pandas 로고 안내](https://pandas.pydata.org/about/citing.html) · [원본](https://pandas.pydata.org/static/img/pandas.svg) |
+| `numpy-logo.svg` | [NumPy 공식 branding](https://github.com/numpy/numpy/tree/main/branding/logo) · [원본](https://raw.githubusercontent.com/numpy/numpy/main/branding/logo/primary/numpylogo.svg) |
+| `polars-logo.png` | [Polars 공식 저장소 자산](https://github.com/pola-rs/polars/blob/main/docs/source/_build/assets/logo.png) |
+| `postgresql-logo.png` | [PostgreSQL Press](https://www.postgresql.org/about/press/) · [원본](https://www.postgresql.org/media/img/about/press/elephant.png) |
