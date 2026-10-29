@@ -104,3 +104,11 @@
 | `numpy-logo.svg` | [NumPy 공식 branding](https://github.com/numpy/numpy/tree/main/branding/logo) · [원본](https://raw.githubusercontent.com/numpy/numpy/main/branding/logo/primary/numpylogo.svg) |
 | `polars-logo.png` | [Polars 공식 저장소 자산](https://github.com/pola-rs/polars/blob/main/docs/source/_build/assets/logo.png) |
 | `postgresql-logo.png` | [PostgreSQL Press](https://www.postgresql.org/about/press/) · [원본](https://www.postgresql.org/media/img/about/press/elephant.png) |
+
+## Docker와 순차 자동처리 (2026-10-29)
+
+- 대용량 자료를 순차 자동처리하기 위한 운영에 Docker를 사용했다는 발표자의 설명을 반영했습니다.
+- 현재 공개 [파이프라인 README](https://github.com/fortranmentis/ocean-forecast-geopipeline)와 [운영 문서](https://github.com/fortranmentis/ocean-forecast-geopipeline/blob/main/docs/OPERATIONS.md)를 재확인했습니다. Bash watcher·잠금·파일 안정성 확인 로직과 같은 이미지에서 역할별 watcher·게시 프로세스를 실행하는 예시가 있습니다.
+- [Docker 공식 개념 안내](https://docs.docker.com/get-started/docker-overview/): 코드와 실행 의존성을 이미지로 묶고 컨테이너로 실행하는 개념을 설명합니다. 순차 처리·중복 제어는 스크립트와 잠금의 역할로 구분합니다. Docker 자체가 순서·성능을 자동 보장하거나 모든 대용량 분석에 필수라는 주장은 하지 않습니다.
+- `docker-logo.svg`: [Docker 공식 docs 저장소의 Whale 아이콘 원본](https://raw.githubusercontent.com/docker/docs/main/assets/icons/Whale.svg)을 변경 없이 사용합니다. 상표는 권리자에게 있으며 후원·인증을 의미하지 않습니다.
+- 총 38화면(발표 37 + Q&A 1), 발표 50분 + Q&A 10분. 인쇄 테스트는 생략합니다.

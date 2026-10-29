@@ -196,9 +196,9 @@ window.SEMINAR_SLIDES = [
         "https://github.com/fortranmentis/ocean-forecast-geopipeline"
       ]
     ],
-    "notes": "2025.06–2026.04 과업의 폐쇄망 파이프라인 개발 경험입니다. 반복 파일 감시, 규격 검토, GeoTIFF·유속 벡터 CSV 생성, 스키마·트랜잭션·이력 관리를 설명합니다. 입력 규격 통과와 과학적 정확도는 별개입니다. 내부 데이터·접속 정보는 공개하지 않습니다.",
-    "seconds": 95,
-    "subtitle": "반복되는 자료처리를 파이프라인으로 연결합니다",
+    "notes": "2025.06–2026.04 과업의 폐쇄망 파이프라인 개발 경험입니다. 반복 파일 감시, 규격 검토, GeoTIFF·유속 벡터 CSV 생성, 스키마·트랜잭션·이력 관리를 설명합니다. 입력 규격 통과와 과학적 정확도는 별개입니다. 내부 데이터·접속 정보는 공개하지 않습니다. 발표자는 대용량 자료의 순차 자동처리 운영에 Docker를 사용했다고 설명했습니다. 공개 OPERATIONS.md에는 감시 스크립트·잠금과 같은 이미지에서 역할별 watcher·게시 프로세스를 실행하는 예시가 있습니다. Docker 자체가 파일 순서를 자동 결정하거나 대용량 연산을 자동 가속하는 것으로 설명하지 않습니다.",
+    "seconds": 55,
+    "subtitle": "대용량 자료를 정해진 순서로 자동 처리합니다",
     "tools": [
       {
         "name": "Python",
@@ -206,6 +206,13 @@ window.SEMINAR_SLIDES = [
         "role": "자료처리 · 자동화",
         "url": "https://www.python.org/",
         "showName": false
+      },
+      {
+        "name": "Docker",
+        "logo": "docker-logo.svg",
+        "role": "실행 환경 · 반복 배포",
+        "url": "https://docs.docker.com/get-started/docker-overview/",
+        "showName": true
       },
       {
         "name": "PostgreSQL",
@@ -216,6 +223,39 @@ window.SEMINAR_SLIDES = [
       }
     ],
     "toolScope": "파이프라인의 도구와 역할"
+  },
+  {
+    "title": "순차 자동처리를 위해,\n왜 Docker를 썼을까요?",
+    "layout": "mapping",
+    "chapter": "빅데이터 실무",
+    "subtitle": "대용량 자료를 같은 실행 환경에서 반복 처리하기",
+    "items": [
+      [
+        "환경을 묶기",
+        "코드 · Python · 라이브러리를 이미지로 함께 관리"
+      ],
+      [
+        "충돌을 줄이기",
+        "업무별 실행 환경을 나누어 의존성 충돌 줄이기"
+      ],
+      [
+        "반복 운영하기",
+        "같은 이미지를 배포하고 역할별 프로세스 실행"
+      ]
+    ],
+    "tools": [
+      {
+        "name": "Docker",
+        "logo": "docker-logo.svg",
+        "role": "실행 환경 · 반복 배포",
+        "url": "https://docs.docker.com/get-started/docker-overview/",
+        "showName": true
+      }
+    ],
+    "toolScope": "자동처리 운영을 위한 실행 도구",
+    "footer": "처리 순서는 감시 스크립트·잠금으로, 실행 환경은 Docker로 관리",
+    "notes": "기술을 처음 듣는 학생에게 Docker 이미지는 코드와 실행에 필요한 환경을 묶은 실행 묶음, 컨테이너는 그 묶음을 실행하는 단위로 간단히 설명합니다. 새 서버마다 필요한 라이브러리를 따로 맞추는 부담과 서로 다른 업무의 의존성 충돌을 줄이고 반복 배포·실행을 관리하기 위해 썼다는 맥락입니다. 이 프로젝트의 순서·중복 실행 제어는 감시 스크립트·flock 잠금 등의 로직이며 Docker가 스케줄러나 순서 보장 알고리즘을 자동 제공하는 것은 아닙니다. 공개 운영 문서는 같은 sfr_005 이미지에서 NetCDF watcher, CSV watcher, 게시 프로세스를 역할별로 실행하는 예시와 파일 안정성 점검을 설명합니다. Docker가 필요한 모든 도구의 설치를 보장하거나 현재 공개 Dockerfile이 새 환경에서 재검증됐다고 주장하지 않습니다. Docker가 대용량 처리의 보편적 필수조건이거나 처리 속도를 자동 향상하는 것으로 설명하지 않습니다. 근거: Docker 공식 개념 안내와 현재 공개 OPERATIONS.md.",
+    "seconds": 70
   },
   {
     "title": "예보가 달라졌다면,\n이유를 설명해야 합니다",
@@ -584,7 +624,7 @@ window.SEMINAR_SLIDES = [
       ]
     ],
     "notes": "회사소개서 4·7·9–25·33–37장 참고. 회사는 2000년 설립된 해양·수환경 기술서비스 기업입니다. 회사 사업 전체와 발표자의 수행 범위를 구분합니다. 원본 PPT와 그 안의 이미지·디자인은 이 사이트에 재배포하지 않습니다.",
-    "seconds": 80
+    "seconds": 65
   },
   {
     "title": "환경 문제를 다루는\n여러 가지 역할",
@@ -610,7 +650,7 @@ window.SEMINAR_SLIDES = [
     ],
     "subtitle": "현장 경험과 데이터 기술이 만나는 곳",
     "notes": "회사 사업을 학생 눈높이로 정리한 흐름입니다. 공식 조직도나 모든 사업의 필수 단계는 아닙니다. 환경·지질·해양·정보기술 전공자가 협업할 수 있는 지점을 설명합니다.",
-    "seconds": 80
+    "seconds": 65
   },
   {
     "title": "같은 전공에서\n여러 직무로",
