@@ -25,6 +25,10 @@
   }
   $('slides').innerHTML = slides.map((s,i) => {
     let content = heading(s,i) + list(s,s.layout) + links(s);
+    if (s.layout === 'ais-case') content = heading(s,i)
+      + `<div class="case-metrics">${s.metrics.map(([value,label])=>`<div><strong>${escape(value)}</strong><p>${escape(label)}</p></div>`).join('')}</div>`
+      + `<div class="case-comparison"><div class="case-input"><h3>처리 전 · 위치·시간 기록</h3><div class="case-fields" aria-label="입력 필드 개념도">${s.inputFields.map(field=>`<p>${escape(field)}</p>`).join('')}</div><ol>${s.processing.map(step=>`<li>${escape(step)}</li>`).join('')}</ol></div><span class="case-arrow" aria-hidden="true">→</span><figure><figcaption>처리 후 · 상태 후보 시각화</figcaption><a href="assets/${escape(s.image)}" target="_blank" rel="noopener noreferrer"><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy"></a></figure></div>`
+      + `<p class="case-usage"><strong>연구 활용</strong> ${escape(s.usage)}</p>` + links(s);
     if (s.layout === 'timeline-photo') content += `<figure class="timeline-photo-image"><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy"></figure>`;
     if (s.layout === 'research' || s.layout === 'service-photo') content = `<div>${content}</div><figure><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy" decoding="async"></figure>`;
     if (s.layout === 'duo') content = heading(s,i) + pictures(s) + links(s);
