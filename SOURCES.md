@@ -30,3 +30,12 @@
 - [GPUTERM](https://fortranmentis.github.io/GPUTERM/ko/), [한국 화장실 지도](https://fortranmentis.github.io/Korea-Toilet-Map/): iOS App Store 제출용 화면. 스토어 배포 버전과 최신 개발 기능이 동일하다고 주장하지 않음.
 
 제3자 이미지·사진·상표의 권리는 각 권리자에게 있습니다. 별도의 포괄적인 재사용 허가를 부여하지 않습니다.
+
+## AI·빅데이터 강조 업데이트 (2026-10-29)
+
+- 발표자의 실무 활용 설명을 보고서·발표자료·사업계획·개발의 네 예시로 재구성했습니다. 모든 회사의 거의 모든 업무에 AI가 적용됐다는 통계적 주장은 하지 않습니다.
+- [Anthropic의 팀별 Claude Code 활용 사례](https://claude.com/resources/articles/how-anthropic-teams-use-claude-code) (2025.07.24): 문서화·테스트·코드 리뷰·시각화·반복 작업 자동화 사례.
+- [OpenAI의 2025 기업 AI 보고서](https://openai.com/business/guides-and-resources/the-state-of-enterprise-ai-2025-report/): 글쓰기·코딩·분석 및 반복 업무의 AI 통합. 공급업체가 공개한 자사·고객 사례라는 범위를 유지합니다.
+- 프론티어는 모델 역량, 클라우드·로컬은 실행 방식이라는 구분을 설명합니다. 특정 모델의 성능 순위나 로컬 모델의 보편적 성능을 주장하지 않습니다.
+- 환경 빅데이터는 자료의 반복 축적·시간·공간·다양한 형식·품질 확인으로 구체화했습니다. 실제 측정되지 않은 처리량·속도·정확도 수치를 추가하지 않습니다.
+- 총 35화면, 발표 50분 + Q&A 10분. 배분: 도입2 / 대학·복무·인턴8 / 회사5 / 빅데이터실무12 / 취업12 / AI·학습9 / 마무리2분.

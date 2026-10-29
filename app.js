@@ -17,7 +17,7 @@
     if (kind === 'words' || kind === 'company' || kind === 'qa' || kind === 'research') return `<ul class="word-list">${s.items.map(x => `<li>${escape(x)}</li>`).join('')}</ul>`;
     if (kind === 'timeline' || kind === 'timeline-photo') return `<div class="timeline-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${escape(b)}</p></div>`).join('')}</div>`;
     if (kind === 'salary') return `<div class="salary-pair">${s.items.map(([a,b,c])=>`<div><p class="degree">${escape(a)}</p><strong>${escape(b)}</strong><p class="unit">${escape(c)}</p></div>`).join('')}</div>`;
-    if (['mapping','role','roles','credentials'].includes(kind)) return `<div class="role-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${lines(b)}</p></div>`).join('')}</div>`;
+    if (['mapping','role','roles','credentials','service-photo'].includes(kind)) return `<div class="role-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${lines(b)}</p></div>`).join('')}</div>`;
     return `<div class="flow-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><span>${escape(b)}</span></div>`).join('')}</div>`;
   }
   function pictures(s) {
@@ -26,7 +26,7 @@
   $('slides').innerHTML = slides.map((s,i) => {
     let content = heading(s,i) + list(s,s.layout) + links(s);
     if (s.layout === 'timeline-photo') content += `<figure class="timeline-photo-image"><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy"></figure>`;
-    if (s.layout === 'research') content = `<div>${content}</div><figure><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy" decoding="async"></figure>`;
+    if (s.layout === 'research' || s.layout === 'service-photo') content = `<div>${content}</div><figure><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy" decoding="async"></figure>`;
     if (s.layout === 'duo') content = heading(s,i) + pictures(s) + links(s);
     if (s.layout === 'apps') content = `<div>${content}</div>${pictures(s)}`;
     if (s.layout === 'closing') content += '<img class="qr" src="assets/seminar-qr.svg" alt="강연 웹페이지 주소 QR 코드">';
@@ -99,7 +99,7 @@
     if(dialogs.some(dialog=>dialog.open))return;
     const key=event.key.toLowerCase();
     if(['arrowright','pagedown',' ','arrowleft','pageup','home','end','g','n','f','?','escape'].includes(key))event.preventDefault();
-    if(['arrowright','pagedown',' '].includes(key)){if(reading)panels[Math.min(index+1,31)].scrollIntoView();show(index+1);}
+    if(['arrowright','pagedown',' '].includes(key)){if(reading)panels[Math.min(index+1,slides.length-1)].scrollIntoView();show(index+1);}
     else if(['arrowleft','pageup'].includes(key)){if(reading)panels[Math.max(index-1,0)].scrollIntoView();show(index-1);}
     else if(key==='home')show(0);
     else if(key==='end')show(slides.length-1);
