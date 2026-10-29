@@ -77,3 +77,14 @@
 - 기존 34번: 평점 3.0은 발표자의 참고 기준입니다 · 지원 조건·마감은 공식 공고에서 최종 확인
 - 기존 36번: 발표자의 진로 제안 · 학사로 지원 가능한 R&D 직무도 공고별로 확인
 - 기존 37번: 8주는 방향과 습관을 만드는 시작입니다 · 자격 취득·합격을 보장하는 일정이 아닙니다
+
+## 실무·AI 검토·개인 분석 실습 업데이트 (2026-10-29)
+
+- 고객·상사·동료 상황은 발표자가 제안한 일반적 교육 사례입니다. 특정 인물·GeoSR 구성원의 역량이나 실제 사건으로 소개하지 않습니다. 학부논문·진로·AI 과제와 연결해 질문·완료 기준·검토·수정을 연습합니다.
+- “환각이 거의 없어졌다”는 주장은 사용하지 않습니다. [Claude 환각 완화 안내](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations)와 [Google Research의 RAG 맥락 연구](https://research.google/blog/deeper-insights-into-retrieval-augmented-generation-the-role-of-sufficient-context/)는 근거 활용과 오류의 잔존을 설명합니다. 본문의 수온·지수 동반 변화→인과 결론은 실제 관측 결과가 아닌 가상 추론 예시입니다.
+- [공공데이터포털](https://www.data.go.kr/)은 실습 자료를 찾는 출발점입니다. 실제 자료를 내려받아 벤치마크한 것으로 표시하지 않습니다.
+- [DuckDB 메모리보다 큰 자료 처리](https://duckdb.org/docs/stable/guides/performance/how_to_tune_workloads): 분할 읽기·열 선택·열 기반 저장·디스크 임시 저장 등의 접근을 소개합니다. 모든 작업이 모든 노트북에서 가능하다거나 특정 성능 향상이 측정됐다고 주장하지 않습니다. Hadoop·Spark가 실습 시작의 필수조건이라는 뜻도 아닙니다.
+- 연산자원·실행시간과 LLM 토큰 사용은 별도로 측정합니다. 원자료의 계산은 Python·SQL로 수행하고 필요한 근거를 AI에 전달하며, 결과 품질과 재현성을 유지하는 방향으로 최적화합니다.
+- AI 초안→사람의 맥락·표현 수정→PoC/MVP→검증은 발표자의 제안입니다. 전체 업계 PM 관행에 대한 통계적 주장이나 모든 과제의 학습 목적을 PM 하나로 제한하는 설명이 아닙니다.
+- Codex·Claude·Gemini·Antigravity는 학습 도구 예시이며 가격·모델 순위·학교별 무료 제공을 보증하지 않습니다. [Antigravity 공식 사이트](https://antigravity.google/)에서 제품 명칭을 확인했습니다. “학교에서 Gemini 지원을 받나요?”는 청중 질문으로만 사용합니다.
+- README.md·코드·자료 버전·실행 조건·측정값·산출물을 남겨 재실행할 수 있게 합니다. 총 37화면(발표 36 + Q&A 1), 발표 50분 + Q&A 10분. AIS 사례 260초는 유지했습니다. 인쇄 테스트는 생략합니다.
