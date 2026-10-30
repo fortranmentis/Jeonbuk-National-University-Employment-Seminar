@@ -73,3 +73,10 @@
 .project-showcase .image-pair img{height:25cqw;object-fit:contain;background:#f5f5f7}
 .project-showcase figcaption{text-align:center}
 .ais-case .case-input ol{font-size:1.18cqw;line-height:1.65}
+
+/* Balance the content above fixed takeaway messages. */
+.slide-chapter{font-size:1.5cqw;top:1.5cqw}
+.slide:has(.key-message){padding-bottom:10cqw}
+.partners{justify-content:center;padding-top:5cqw;padding-bottom:4cqw}
+.footer-prominent .slide-footer{font-size:1.65cqw;line-height:1.5;font-weight:650;color:var(--ink);bottom:2.4cqw}
+.footer-prominent{padding-bottom:7cqw}

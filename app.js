@@ -42,7 +42,7 @@
     if (s.emphasis) content += `<p class="key-message">${escape(s.emphasis)}</p>`;
     content += `<p class="slide-chapter">${escape(s.chapter)}</p>`;
     if (s.footer) content += `<p class="slide-footer">${escape(s.footer)}</p>`;
-    return `<section class="slide ${escape(s.layout)}" id="slide-${i+1}" data-slide="${i+1}" aria-labelledby="title-${i+1}"${s.image && ['photo','cover'].includes(s.layout) ? ` style="--photo:url('assets/${escape(s.image)}')"` : ''}${i ? ' hidden' : ''}>${content}</section>`;
+    return `<section class="slide ${escape(s.layout)}${s.footerProminent ? ' footer-prominent' : ''}" id="slide-${i+1}" data-slide="${i+1}" aria-labelledby="title-${i+1}"${s.image && ['photo','cover'].includes(s.layout) ? ` style="--photo:url('assets/${escape(s.image)}')"` : ''}${i ? ' hidden' : ''}>${content}</section>`;
   }).join('');
   const panels = [...document.querySelectorAll('.slide')];
   const chapters = [];
