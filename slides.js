@@ -737,7 +737,7 @@ window.SEMINAR_SLIDES = [
   },
   {
     "title": "채용은\n이렇게 진행됩니다",
-    "layout": "flow",
+    "layout": "recruitment",
     "chapter": "회사 소개와 채용",
     "items": [
       [
@@ -761,9 +761,9 @@ window.SEMINAR_SLIDES = [
         "최종합격"
       ]
     ],
-    "subtitle": "석사 이상 지원자: PT 면접",
     "notes": "사용자가 제공한 채용 절차를 그대로 반영했습니다. 학사 면접 방식과 PT 시간·주제는 제공되지 않아 추정하지 않습니다. 본인의 실제 서류·면접 경험은 기억하는 범위에서 이야기합니다.",
-    "seconds": 74
+    "seconds": 74,
+    "interviewNote": "석사 이상 지원자: PT 면접"
   },
   {
     "title": "신입 연봉 안내",
@@ -842,7 +842,7 @@ window.SEMINAR_SLIDES = [
   },
   {
     "title": "자격증도\n목표 직무에 맞춰",
-    "layout": "credentials",
+    "layout": "credential-cards",
     "chapter": "취업 준비와 실행",
     "items": [
       [
@@ -947,7 +947,7 @@ window.SEMINAR_SLIDES = [
   },
   {
     "title": "앞으로 8주,\n내 경로에 맞춰 준비하기",
-    "layout": "timeline",
+    "layout": "action-plan",
     "chapter": "취업 준비와 실행",
     "items": [
       [
@@ -968,7 +968,8 @@ window.SEMINAR_SLIDES = [
       ]
     ],
     "notes": "사기업·공공기관·공무원 가운데 관심 경로를 정하고 실제 공고를 기준으로 개인 일정을 만듭니다. 어학·NCS·PSAT·기사 등을 모두 동시에 준비하거나 8주 안에 전부 끝내자는 계획이 아닙니다. 공무원 시험 준비가 우선이라면 분석 프로젝트보다 시험 학습에 시간을 더 배분할 수 있습니다. R&D 희망자는 대학원·연구실 상담도 계획에 넣습니다. 포트폴리오 경험 목록은 먼저 넓게 정리하고 대표 사례를 선정합니다. 화면에서 자료·출처로 옮긴 안내: 8주는 방향과 습관을 만드는 시작입니다 · 자격 취득·합격을 보장하는 일정이 아닙니다",
-    "seconds": 100
+    "seconds": 100,
+    "footer": "이번 주: 관심 공고 3개와 내 경험 목록부터 시작하세요"
   },
   {
     "title": "과학이라는 기틀 위에,\n빅데이터라는 현실을 구현하기",

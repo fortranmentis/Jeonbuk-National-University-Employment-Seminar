@@ -18,8 +18,10 @@
   }
   function list(s, kind) {
     if (!s.items) return '';
+    if (kind === 'recruitment') return `<ol class="recruitment-steps">${s.items.map(([n,label])=>`<li><span class="step-number">${escape(n)}</span><strong>${escape(label)}</strong>${label==='면접'?`<p>${escape(s.interviewNote)}</p>`:''}</li>`).join('')}</ol>`;
+    if (kind === 'credential-cards') return `<div class="credential-groups">${s.items.map(([label,names],i)=>`<section class="credential-group ${i?'candidate':'held'}"><h3>${lines(label)}</h3><ul>${names.split(/\n| · /).map(name=>`<li>${escape(name)}</li>`).join('')}</ul></section>`).join('')}</div>`;
     if (kind === 'graduate-advice' || kind === 'words' || kind === 'company' || kind === 'qa' || kind === 'research') return `<ul class="word-list">${s.items.map(x => `<li>${escape(x)}</li>`).join('')}</ul>`;
-    if (kind === 'timeline' || kind === 'timeline-photo') return `<div class="timeline-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${escape(b)}</p></div>`).join('')}</div>`;
+    if (kind === 'action-plan' || kind === 'timeline' || kind === 'timeline-photo') return `<div class="timeline-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${escape(b)}</p></div>`).join('')}</div>`;
     if (kind === 'salary') return `<div class="salary-pair">${s.items.map(([a,b,c])=>`<div><p class="degree">${escape(a)}</p><strong>${escape(b)}</strong><p class="unit">${escape(c)}</p></div>`).join('')}</div>`;
     if (['mapping','role','roles','credentials','service-photo','docker-intro','partners','agenda'].includes(kind)) return `<div class="role-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${lines(b)}</p></div>`).join('')}</div>`;
     return `<div class="flow-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><span>${escape(b)}</span></div>`).join('')}</div>`;
@@ -31,8 +33,8 @@
     let content = heading(s,i) + list(s,s.layout) + links(s);
     if (s.layout === 'ais-case') content = heading(s,i)
       + `<div class="case-metrics">${s.metrics.map(([value,label])=>`<div><strong>${escape(value)}</strong><p>${escape(label)}</p></div>`).join('')}</div>`
-      + `<div class="case-comparison"><div class="case-input"><h3>처리 전 · 위치·시간 기록</h3><div class="case-fields" aria-label="입력 필드 개념도">${s.inputFields.map(field=>`<p>${escape(field)}</p>`).join('')}</div><ol>${s.processing.map(step=>`<li>${escape(step)}</li>`).join('')}</ol>${toolStrip(s)}</div><span class="case-arrow" aria-hidden="true">→</span><figure><figcaption>처리 후 · 상태 후보 시각화</figcaption><a href="assets/${escape(s.image)}" target="_blank" rel="noopener noreferrer"><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy"></a></figure></div>`
-      + links(s, false);
+      + `<div class="case-comparison"><div class="case-input"><h3>처리 전 · 위치·시간 기록</h3><div class="case-fields" aria-label="입력 필드 개념도">${s.inputFields.map(field=>`<p>${escape(field)}</p>`).join('')}</div><ol>${s.processing.map(step=>`<li>${escape(step)}</li>`).join('')}</ol>${toolStrip(s)}${links(s, false)}</div><span class="case-arrow" aria-hidden="true">→</span><figure><figcaption>처리 후 · 상태 후보 시각화</figcaption><a href="assets/${escape(s.image)}" target="_blank" rel="noopener noreferrer"><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy"></a></figure></div>`
+      ;
     if (s.layout === 'timeline-photo') content += s.images ? `<div class="timeline-photo-images">${s.images.map(([src,alt,caption])=>`<figure><img src="assets/${escape(src)}" alt="${escape(alt)}" loading="lazy"><figcaption>${escape(caption)}</figcaption></figure>`).join('')}</div>` : `<figure class="timeline-photo-image"><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy"></figure>`;
     if (s.layout === 'research' || s.layout === 'service-photo') content = `<div>${content}</div><figure><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy" decoding="async"></figure>`;
     if (s.layout === 'duo') content = heading(s,i) + pictures(s) + links(s);

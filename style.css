@@ -104,3 +104,27 @@
 .ais-case .case-metrics{padding-bottom:.7cqw;margin-bottom:.8cqw}
 .ais-case .case-input ol{margin-top:.7cqw}
 .ais-case .slide-links{position:absolute;left:5.5cqw;bottom:1.2cqw;max-width:50cqw}
+/* Clear steps and action-oriented closing. */
+.recruitment-steps{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:2.5cqw;margin:3cqw 0 0;padding:0}
+.recruitment-steps li{position:relative;background:#eef6ff;border:1px solid #c7dff6;border-radius:1cqw;padding:1.5cqw 1cqw;min-height:12cqw}
+.recruitment-steps li+li::before{content:'→';position:absolute;left:-2.4cqw;top:4.3cqw;font-size:2.2cqw;color:var(--blue);font-weight:700}
+.step-number{display:block;font-size:1.8cqw;font-weight:700;color:var(--blue);margin-bottom:1.2cqw}
+.recruitment-steps strong{display:block;font-size:2cqw;line-height:1.4;word-break:keep-all}
+.recruitment-steps p{font-size:1.15cqw;line-height:1.5;margin-top:1cqw}
+.credential-groups{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;margin-top:1cqw}
+.credential-group h3{font-size:1.8cqw;line-height:1.5;min-height:5.5cqw;margin:0 0 1cqw}
+.credential-group ul{list-style:none;padding:0;margin:0;display:grid;gap:1.2cqw}
+.credential-group li{padding:1.3cqw 1.5cqw;border-radius:.8cqw;font-size:1.85cqw;font-weight:650;line-height:1.4;word-break:keep-all}
+.credential-group.held li{background:#e9f4ff;color:#0056a8;border:1px solid #bbd8f5}
+.credential-group.candidate li{background:#f1f1f4;color:var(--ink);border:1px solid #d4d4db}
+.action-plan{background:#08090c;color:#fff;padding-bottom:9cqw}
+.action-plan .slide-chapter{color:#a8d5ff}
+.action-plan .timeline-list{gap:2cqw;border-color:#42647f}
+.action-plan .timeline-list strong{font-size:3cqw;color:#8cc8ff}
+.action-plan .timeline-list p{font-size:1.85cqw;line-height:1.7;color:#fff}
+.action-plan .slide-footer{color:#fff;font-size:1.9cqw;font-weight:650;bottom:3cqw}
+.ais-case .case-comparison{grid-template-columns:1fr 3cqw 28cqw;align-items:start}
+.ais-case .case-comparison figure img{width:28cqw;height:28cqw}
+.ais-case .case-input .slide-links{position:static;max-width:none;margin-top:1.2cqw}
+.ais-case .tool-section{margin-top:.8cqw}
+.ais-case .case-arrow{align-self:center}
