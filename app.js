@@ -21,7 +21,7 @@
     if (kind === 'graduate-advice' || kind === 'words' || kind === 'company' || kind === 'qa' || kind === 'research') return `<ul class="word-list">${s.items.map(x => `<li>${escape(x)}</li>`).join('')}</ul>`;
     if (kind === 'timeline' || kind === 'timeline-photo') return `<div class="timeline-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${escape(b)}</p></div>`).join('')}</div>`;
     if (kind === 'salary') return `<div class="salary-pair">${s.items.map(([a,b,c])=>`<div><p class="degree">${escape(a)}</p><strong>${escape(b)}</strong><p class="unit">${escape(c)}</p></div>`).join('')}</div>`;
-    if (['mapping','role','roles','credentials','service-photo'].includes(kind)) return `<div class="role-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${lines(b)}</p></div>`).join('')}</div>`;
+    if (['mapping','role','roles','credentials','service-photo','docker-intro'].includes(kind)) return `<div class="role-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${lines(b)}</p></div>`).join('')}</div>`;
     return `<div class="flow-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><span>${escape(b)}</span></div>`).join('')}</div>`;
   }
   function pictures(s) {
