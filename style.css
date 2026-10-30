@@ -51,3 +51,25 @@
 .role-list strong{white-space:pre-line}
 .flow:has(.tool-section),.timeline:has(.tool-section){padding-top:3cqw;padding-bottom:3cqw}
 .tool-brand img{min-width:0}
+.slide-chapter{position:absolute;right:5.5cqw;top:1.4cqw;font-size:1cqw;font-weight:650;color:var(--blue);letter-spacing:.04em}
+.cover .slide-chapter,.photo .slide-chapter,.company .slide-chapter,.closing .slide-chapter,.qa .slide-chapter{color:#a8d5ff}
+.key-message{position:absolute;left:5.5cqw;right:5.5cqw;bottom:2.2cqw;padding:.8cqw 1.2cqw;border-left:.25cqw solid var(--blue);background:#eef6ff;color:#0059b3;font-size:1.65cqw;line-height:1.5;font-weight:700}
+.agenda h2{font-size:4cqw}
+.agenda .role-list div{padding:1cqw 0;grid-template-columns:8% 1fr}
+.agenda .role-list strong{font-size:1.8cqw}
+.agenda .role-list p{font-size:1.9cqw}
+.partners{justify-content:flex-start;padding-top:4cqw}
+.partners h2{font-size:3.3cqw;margin-bottom:1.1cqw}
+.partners .subtitle{font-size:1.5cqw}
+.partners .role-list{display:grid;grid-template-columns:1.45fr 1fr;gap:1.2cqw 2cqw}
+.partners .role-list div{display:block;padding:1cqw 0}
+.partners .role-list strong{display:block;font-size:1.65cqw;margin-bottom:.6cqw}
+.partners .role-list p{font-size:1.25cqw;line-height:1.8}
+.project-showcase{justify-content:flex-start;padding-top:4cqw}
+.project-showcase h2{font-size:3.6cqw;margin-bottom:.8cqw}
+.project-showcase .subtitle{font-size:1.5cqw}
+.project-showcase .slide-links{font-size:1.1cqw;margin-top:1cqw}
+.project-showcase .image-pair{grid-template-columns:1fr 1fr 2fr;gap:2cqw;margin-top:1.5cqw}
+.project-showcase .image-pair img{height:25cqw;object-fit:contain;background:#f5f5f7}
+.project-showcase figcaption{text-align:center}
+.ais-case .case-input ol{font-size:1.18cqw;line-height:1.65}

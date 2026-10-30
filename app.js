@@ -21,7 +21,7 @@
     if (kind === 'graduate-advice' || kind === 'words' || kind === 'company' || kind === 'qa' || kind === 'research') return `<ul class="word-list">${s.items.map(x => `<li>${escape(x)}</li>`).join('')}</ul>`;
     if (kind === 'timeline' || kind === 'timeline-photo') return `<div class="timeline-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${escape(b)}</p></div>`).join('')}</div>`;
     if (kind === 'salary') return `<div class="salary-pair">${s.items.map(([a,b,c])=>`<div><p class="degree">${escape(a)}</p><strong>${escape(b)}</strong><p class="unit">${escape(c)}</p></div>`).join('')}</div>`;
-    if (['mapping','role','roles','credentials','service-photo','docker-intro'].includes(kind)) return `<div class="role-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${lines(b)}</p></div>`).join('')}</div>`;
+    if (['mapping','role','roles','credentials','service-photo','docker-intro','partners','agenda'].includes(kind)) return `<div class="role-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${lines(b)}</p></div>`).join('')}</div>`;
     return `<div class="flow-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><span>${escape(b)}</span></div>`).join('')}</div>`;
   }
   function pictures(s) {
@@ -32,13 +32,15 @@
     if (s.layout === 'ais-case') content = heading(s,i)
       + `<div class="case-metrics">${s.metrics.map(([value,label])=>`<div><strong>${escape(value)}</strong><p>${escape(label)}</p></div>`).join('')}</div>`
       + `<div class="case-comparison"><div class="case-input"><h3>처리 전 · 위치·시간 기록</h3><div class="case-fields" aria-label="입력 필드 개념도">${s.inputFields.map(field=>`<p>${escape(field)}</p>`).join('')}</div><ol>${s.processing.map(step=>`<li>${escape(step)}</li>`).join('')}</ol>${toolStrip(s)}</div><span class="case-arrow" aria-hidden="true">→</span><figure><figcaption>처리 후 · 상태 후보 시각화</figcaption><a href="assets/${escape(s.image)}" target="_blank" rel="noopener noreferrer"><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy"></a></figure></div>`
-      + `<p class="case-usage"><strong>연구 활용</strong> ${escape(s.usage)}</p>` + links(s, false);
+      + links(s, false);
     if (s.layout === 'timeline-photo') content += s.images ? `<div class="timeline-photo-images">${s.images.map(([src,alt,caption])=>`<figure><img src="assets/${escape(src)}" alt="${escape(alt)}" loading="lazy"><figcaption>${escape(caption)}</figcaption></figure>`).join('')}</div>` : `<figure class="timeline-photo-image"><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy"></figure>`;
     if (s.layout === 'research' || s.layout === 'service-photo') content = `<div>${content}</div><figure><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy" decoding="async"></figure>`;
     if (s.layout === 'duo') content = heading(s,i) + pictures(s) + links(s);
-    if (s.layout === 'apps') content = `<div>${content}</div>${pictures(s)}`;
+    if (s.layout === 'apps' || s.layout === 'project-showcase') content = `<div>${content}</div>${pictures(s)}`;
     if (s.layout === 'closing') content += '<img class="qr" src="assets/seminar-qr.svg" alt="강연 웹페이지 주소 QR 코드">';
     if (s.byline) content += `<p class="byline">${escape(s.byline)}</p>`;
+    if (s.emphasis) content += `<p class="key-message">${escape(s.emphasis)}</p>`;
+    content += `<p class="slide-chapter">${escape(s.chapter)}</p>`;
     if (s.footer) content += `<p class="slide-footer">${escape(s.footer)}</p>`;
     return `<section class="slide ${escape(s.layout)}" id="slide-${i+1}" data-slide="${i+1}" aria-labelledby="title-${i+1}"${s.image && ['photo','cover'].includes(s.layout) ? ` style="--photo:url('assets/${escape(s.image)}')"` : ''}${i ? ' hidden' : ''}>${content}</section>`;
   }).join('');
