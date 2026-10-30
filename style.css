@@ -128,3 +128,8 @@
 .ais-case .case-input .slide-links{position:static;max-width:none;margin-top:1.2cqw}
 .ais-case .tool-section{margin-top:.8cqw}
 .ais-case .case-arrow{align-self:center}
+/* Centre transition arrows between the four process stages. */
+.flow .flow-list{gap:4cqw}
+.flow .flow-list>div+div::before{left:-3.4cqw;top:50%;transform:translateY(-50%);width:2.8cqw;text-align:center;font-size:2.8cqw;line-height:1;font-weight:750;color:var(--blue)}
+.recruitment-steps li{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.recruitment-steps strong,.recruitment-steps p{width:100%;text-align:center}
