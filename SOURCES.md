@@ -145,3 +145,5 @@
 ## 바다결 기술 설명 (2026-11-04)
 
 [공개 README v0.9.0](https://github.com/fortranmentis/marine-travel-AI-agent)와 연결된 LANGGRAPH.md·WORKFLOWS.md·OBSERVABILITY.md 안내를 기준으로 LangGraph 상태 흐름, FastAPI API, Ollama 모델 실행, n8n 자료 수집과 Langfuse 실행 추적을 설명합니다. 폼 기반 LangGraph와 자유 대화 도구 루프는 구분합니다. 빅데이터가 전면 대체된다는 추세 주장은 하지 않고 데이터 기반 위에 에이전트를 연결하는 사례로 소개합니다. 네 개의 기술 배지는 기존 GitHub 프로필의 로컬 SVG 디자인을 재사용했습니다.
+
+2026-11-04 12번 상세 설명은 [Ocean Forecast GeoPipeline 공개 README](https://github.com/fortranmentis/ocean-forecast-geopipeline)의 입력·규격 비교·변환·DB 연동·운영 경계를 재확인해 구성했습니다. 기록은 모든 단계에 걸쳐 남기며, 산출물 생성·DB 반영·게시의 성공은 별도로 확인해야 한다고 설명합니다.

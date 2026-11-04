@@ -279,24 +279,141 @@ window.SEMINAR_SLIDES = [
         "logo": "python-logo.svg",
         "role": "자료처리 · 자동화",
         "url": "https://www.python.org/",
-        "showName": false
+        "showName": false,
+        "context": "GeoPipeline / 처리 단계와 구현 기술",
+        "detail": {
+          "intro": "자료를 읽고 검사·계산·변환하는 절차를 코드로 작성하는 프로그래밍 언어입니다.",
+          "role": "NetCDF·CSV 규격 비교, 공간자료 변환, 유속 계산과 산출물 생성을 처리합니다. 파일 감시·순차 실행과 잠금은 Shell 스크립트와 함께 구성합니다.",
+          "steps": [
+            "자료 읽기",
+            "규격 검사",
+            "변환·계산",
+            "결과·보고서 저장"
+          ],
+          "takeaway": "반복 작업을 함수와 실행 파일로 남기면 같은 입력을 다시 처리하고 비교하기 쉽습니다.",
+          "roleTitle": "파이프라인에서는 무엇을 하나요?"
+        }
       },
       {
         "name": "Docker",
         "logo": "docker-logo.svg",
         "role": "실행 환경 · 반복 배포",
         "url": "https://docs.docker.com/get-started/docker-overview/",
-        "showName": true
+        "showName": true,
+        "context": "GeoPipeline / 처리 단계와 구현 기술",
+        "detail": {
+          "intro": "코드와 실행에 필요한 라이브러리를 이미지로 묶고 컨테이너로 실행하는 도구입니다.",
+          "role": "동일한 Python 의존성과 실행 환경을 서버에 배포하고 역할별 프로세스를 실행합니다. 처리 순서·중복 실행 방지는 감시 스크립트와 잠금이 담당합니다.",
+          "steps": [
+            "코드·의존성 정의",
+            "이미지 구성",
+            "컨테이너 실행",
+            "같은 환경으로 재배포"
+          ],
+          "takeaway": "Docker가 실행 환경을 맞춰주더라도 처리 순서나 분석 속도를 자동 보장하지는 않습니다.",
+          "roleTitle": "파이프라인에서는 무엇을 하나요?"
+        }
       },
       {
         "name": "PostgreSQL",
         "logo": "postgresql-logo.png",
-        "role": "적재 · 트랜잭션 · 이력",
+        "role": "SQL · DBMS · 트랜잭션",
         "url": "https://www.postgresql.org/",
-        "showName": true
+        "showName": true,
+        "context": "GeoPipeline / 처리 단계와 구현 기술",
+        "detail": {
+          "intro": "SQL은 자료를 조회·갱신하는 언어이고, PostgreSQL은 자료를 저장·관리하며 SQL을 실행하는 DBMS입니다.",
+          "role": "처리 자료와 점검·관리 정보를 테이블에 저장하고 갱신합니다. 스키마와 트랜잭션을 사용해 자료 구조와 관련 변경을 관리합니다.",
+          "steps": [
+            "저장 구조 정의",
+            "SQL로 조회·갱신",
+            "트랜잭션 관리",
+            "이력·결과 확인"
+          ],
+          "takeaway": "SQL이 요청을 적는 언어라면 DBMS는 그 요청을 받아 자료를 관리하는 시스템입니다.",
+          "roleTitle": "파이프라인에서는 무엇을 하나요?"
+        }
       }
     ],
-    "toolScope": "파이프라인의 도구와 역할"
+    "toolScope": "단계와 기술을 눌러 상세 보기",
+    "stageDetails": [
+      {
+        "name": "확인",
+        "role": "규격 · 시간 · 좌표",
+        "url": "https://github.com/fortranmentis/ocean-forecast-geopipeline",
+        "context": "GeoPipeline / 처리 단계와 구현 기술",
+        "detail": {
+          "intro": "들어온 자료가 약속한 형식과 규격에 맞는지 먼저 비교하는 단계입니다.",
+          "role": "로컬 NetCDF·CSV 파일과 제공된 규격을 비교합니다. 변수·단위·시간·좌표 등 보고된 검사 결과를 남기고, 보고된 항목이 모두 일치하는 입력을 다음 처리 대상으로 넘깁니다.",
+          "steps": [
+            "입력 파일 감시",
+            "규격 비교",
+            "항목별 판정 기록",
+            "처리 대상 선별"
+          ],
+          "takeaway": "규격이 맞는다는 것은 예측이 과학적으로 정확하다는 뜻과 다릅니다.",
+          "roleTitle": "파이프라인에서는 무엇을 하나요?",
+          "introTitle": "어떤 단계인가요?"
+        }
+      },
+      {
+        "name": "변환",
+        "role": "공간 처리 · 산출물",
+        "url": "https://github.com/fortranmentis/ocean-forecast-geopipeline",
+        "context": "GeoPipeline / 처리 단계와 구현 기술",
+        "detail": {
+          "intro": "분석용 자료를 지도나 서비스에서 쓰기 좋은 구조로 바꾸는 단계입니다.",
+          "role": "격자·좌표계·시간·깊이를 처리하고 GeoTIFF와 유속 벡터 CSV를 만듭니다. U/V 성분에서 속도·방향을 계산하며, 실제 산출물은 입력 자료와 설정에 따라 달라집니다.",
+          "steps": [
+            "격자·좌표 확인",
+            "재격자·재투영",
+            "유속·방향 계산",
+            "지도·벡터 산출물"
+          ],
+          "takeaway": "자료를 보기 좋게 바꾸더라도 좌표·단위·시간의 의미를 유지해야 합니다.",
+          "roleTitle": "파이프라인에서는 무엇을 하나요?",
+          "introTitle": "어떤 단계인가요?"
+        }
+      },
+      {
+        "name": "적재",
+        "role": "PostgreSQL 갱신",
+        "url": "https://github.com/fortranmentis/ocean-forecast-geopipeline",
+        "context": "GeoPipeline / 처리 단계와 구현 기술",
+        "detail": {
+          "intro": "처리한 자료를 서비스가 조회할 수 있도록 데이터베이스에 반영하는 단계입니다.",
+          "role": "정해진 테이블과 스키마에 맞춰 자료와 점검 정보를 갱신합니다. 트랜잭션으로 관련 변경을 묶고 중복·실패와 재실행 시의 처리 방식을 관리합니다.",
+          "steps": [
+            "테이블·스키마 확인",
+            "자료 반영",
+            "트랜잭션 처리",
+            "반영 결과 점검"
+          ],
+          "takeaway": "파일이 생성됐다는 사실만으로 DB 반영이나 서비스 게시까지 성공한 것은 아닙니다.",
+          "roleTitle": "파이프라인에서는 무엇을 하나요?",
+          "introTitle": "어떤 단계인가요?"
+        }
+      },
+      {
+        "name": "기록",
+        "role": "판정 · 오류 · 재처리",
+        "url": "https://github.com/fortranmentis/ocean-forecast-geopipeline",
+        "context": "GeoPipeline / 처리 단계와 구현 기술",
+        "detail": {
+          "intro": "처리 결과를 설명하고 문제가 난 지점부터 다시 살펴볼 수 있게 근거를 남기는 일입니다.",
+          "role": "규격 판정 보고서에는 파일명·검사 항목·기준값·실제값 등을 남깁니다. 처리 상태와 오류를 확인해 재처리 대상을 정합니다. 기록은 마지막에만 하는 일이 아니라 각 단계에 걸쳐 남깁니다.",
+          "steps": [
+            "파일·기준 기록",
+            "항목별 결과 보관",
+            "오류 지점 추적",
+            "재처리·최종 확인"
+          ],
+          "takeaway": "“왜 이 결과가 나왔고 어디까지 성공했는가?”를 다시 확인할 수 있어야 합니다.",
+          "roleTitle": "파이프라인에서는 무엇을 하나요?",
+          "introTitle": "어떤 단계인가요?"
+        }
+      }
+    ]
   },
   {
     "title": "Docker란 무엇이고\n순차 자동처리를 위해,\n왜 Docker를 썼을까요?",

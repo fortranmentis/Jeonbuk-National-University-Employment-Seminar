@@ -7,13 +7,16 @@
   const dialogs = ['overview', 'help', 'resources', 'tool-dialog'].map($);
   const lines = value => escape(value).replace(/\n/g, '<br>');
   const toolDetails = [];
+  function detailTrigger(t, content, className) {
+    const key = toolDetails.push(t) - 1;
+    return `<button type="button" class="${className}" data-tool-detail="${key}" aria-label="${escape(t.name)} 상세 설명" aria-haspopup="dialog" aria-controls="tool-dialog">${content}</button>`;
+  }
   function toolStrip(s) {
     if (!s.tools) return '';
     return `<div class="tool-section"><p class="tool-scope">${escape(s.toolScope)}</p><div class="tool-strip">${s.tools.map(t=>{
       const brand = `<span class="tool-brand"><img src="assets/${escape(t.logo)}" alt="${t.showName?'':escape(t.name)}">${t.showName?`<strong>${escape(t.name)}</strong>`:''}</span><span class="tool-role">${escape(t.role)}</span>`;
       if (!t.detail) return `<a class="tool-item" href="${escape(t.url)}" target="_blank" rel="noopener noreferrer">${brand}</a>`;
-      const key = toolDetails.push(t) - 1;
-      return `<button type="button" class="tool-item tool-detail-button" data-tool-detail="${key}" aria-label="${escape(t.name)} 상세 설명" aria-haspopup="dialog" aria-controls="tool-dialog">${brand}</button>`;
+      return detailTrigger(t, brand, 'tool-item tool-detail-button');
     }).join('')}</div></div>`;
   }
   function links(s, includeTools = true) {
@@ -30,7 +33,10 @@
     if (kind === 'action-plan' || kind === 'timeline' || kind === 'timeline-photo') return `<div class="timeline-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${escape(b)}</p></div>`).join('')}</div>`;
     if (kind === 'salary') return `<div class="salary-pair">${s.items.map(([a,b,c])=>`<div><p class="degree">${escape(a)}</p><strong>${escape(b)}</strong><p class="unit">${escape(c)}</p></div>`).join('')}</div>`;
     if (['mapping','role','roles','credentials','service-photo','docker-intro','partners','agenda'].includes(kind)) return `<div class="role-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${lines(b)}</p></div>`).join('')}</div>`;
-    return `<div class="flow-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><span>${escape(b)}</span></div>`).join('')}</div>`;
+    return `<div class="flow-list">${s.items.map(([a,b],i)=>{
+      const content = `<strong>${escape(a)}</strong><span>${escape(b)}</span>`;
+      return `<div>${s.stageDetails?.[i] ? detailTrigger(s.stageDetails[i], content, 'flow-detail-button') : content}</div>`;
+    }).join('')}</div>`;
   }
   function pictures(s) {
     return `<div class="image-pair">${s.images.map(([src,alt,caption])=>`<figure><img src="assets/${escape(src)}" alt="${escape(alt)}" loading="lazy" decoding="async"><figcaption>${escape(caption)}</figcaption></figure>`).join('')}</div>`;
@@ -101,7 +107,8 @@
     const t = toolDetails[Number(button.dataset.toolDetail)];
     $('tool-dialog-title').textContent = t.name;
     $('tool-dialog-role').textContent = t.role;
-    $('tool-dialog-body').innerHTML = `<section><h3>어떤 기술인가요?</h3><p>${escape(t.detail.intro)}</p></section><section><h3>바다결에서는 무엇을 하나요?</h3><p>${escape(t.detail.role)}</p></section><section><h3>흐름으로 살펴보기</h3><ol class="tool-detail-flow">${t.detail.steps.map(step=>`<li>${escape(step)}</li>`).join('')}</ol></section><p class="tool-detail-takeaway">${escape(t.detail.takeaway)}</p>`;
+    $('tool-dialog-context').textContent = t.context || '바다결 / 구현 기술';
+    $('tool-dialog-body').innerHTML = `<section><h3>${escape(t.detail.introTitle || '어떤 기술인가요?')}</h3><p>${escape(t.detail.intro)}</p></section><section><h3>${escape(t.detail.roleTitle || '바다결에서는 무엇을 하나요?')}</h3><p>${escape(t.detail.role)}</p></section><section><h3>흐름으로 살펴보기</h3><ol class="tool-detail-flow">${t.detail.steps.map(step=>`<li>${escape(step)}</li>`).join('')}</ol></section><p class="tool-detail-takeaway">${escape(t.detail.takeaway)}</p>`;
     $('tool-dialog-source').href = t.url;
     open($('tool-dialog'));
   }));
