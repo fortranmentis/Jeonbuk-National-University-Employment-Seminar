@@ -229,17 +229,104 @@ window.SEMINAR_SLIDES = [
         "logo": "pandas-logo.svg",
         "role": "표 · 시계열 · 집계",
         "url": "https://pandas.pydata.org/",
-        "showName": false
+        "showName": false,
+        "context": "예보 분석 / 관측·예측·서비스",
+        "detail": {
+          "intro": "행과 열로 이루어진 표와 시계열 자료를 다루는 Python 라이브러리입니다.",
+          "role": "예측·서비스 표를 읽고 조건별로 집계합니다. 날짜·지역·활동과 레코드 대응 관계를 맞춘 뒤 차이를 계산하고 보고서로 내보냅니다.",
+          "steps": [
+            "표 읽기",
+            "레코드 정렬",
+            "조건별 비교·집계",
+            "보고서 출력"
+          ],
+          "takeaway": "자료 정렬과 조건·결측 처리 기준을 명시하고 결과를 검토하세요.",
+          "introTitle": "어떤 기술인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
       },
       {
         "name": "NumPy",
         "logo": "numpy-logo.svg",
         "role": "배열 · 수치 계산",
         "url": "https://numpy.org/",
-        "showName": false
+        "showName": false,
+        "context": "예보 분석 / 관측·예측·서비스",
+        "detail": {
+          "intro": "여러 수치를 배열로 저장하고 계산하는 Python 라이브러리입니다.",
+          "role": "값 배열과 수치 조건을 계산할 때 사용합니다. 비교 대상의 자료형·결측·단위를 먼저 맞추고 동일한 기준으로 수치 연산을 수행합니다.",
+          "steps": [
+            "수치 배열 준비",
+            "조건·결측 확인",
+            "배열 연산",
+            "집계값 확인"
+          ],
+          "takeaway": "자료 정렬과 조건·결측 처리 기준을 명시하고 결과를 검토하세요.",
+          "introTitle": "어떤 기술인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
       }
     ],
-    "toolScope": "비교·통계 분석 도구"
+    "toolScope": "관측·예측·서비스와 기술을 눌러 상세 보기",
+    "stageDetails": [
+      {
+        "name": "관측",
+        "role": "실제로 관측한 값",
+        "context": "예보 분석 / 관측·예측·서비스",
+        "url": "https://github.com/fortranmentis/marine-forecast-index-stats",
+        "detail": {
+          "intro": "관측장비나 현장 기록으로 얻은 값입니다. 관측에도 오차·결측·측정 간격이 있습니다.",
+          "role": "관측과 예측을 비교하려면 같은 위치·시각·변수·단위를 맞춰야 합니다. 발표자의 업무에는 관측 비교가 포함되지만 연결된 공개 통계 코드는 예측·서비스 제품 비교를 다룹니다.",
+          "steps": [
+            "관측 품질 확인",
+            "시각·위치 정렬",
+            "단위·변수 일치",
+            "같은 조건에서 비교"
+          ],
+          "takeaway": "서로 다른 장소나 시각의 값을 그대로 비교하면 차이의 이유를 잘못 해석할 수 있습니다.",
+          "introTitle": "어떤 개념인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
+      },
+      {
+        "name": "예측",
+        "role": "모델이 계산한 값",
+        "context": "예보 분석 / 관측·예측·서비스",
+        "url": "https://github.com/fortranmentis/marine-forecast-index-stats",
+        "detail": {
+          "intro": "관측과 물리 법칙·계산 등을 바탕으로 미래나 특정 조건의 상태를 추정한 값입니다.",
+          "role": "모델 버전·예측 생산시각·대상시각이 다르면 결과가 달라질 수 있습니다. 같은 대상을 연결하고 파고·수온·특보 등 어떤 입력이 함께 바뀌었는지 살펴봅니다.",
+          "steps": [
+            "모델·생산시각 확인",
+            "대상시각 정렬",
+            "변수별 변화 비교",
+            "해석 근거 기록"
+          ],
+          "takeaway": "예측 제품끼리 차이가 있다는 사실만으로 어느 쪽의 정확도가 더 높은지 알 수는 없습니다.",
+          "introTitle": "어떤 개념인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
+      },
+      {
+        "name": "서비스",
+        "role": "규칙을 적용해 제공한 정보",
+        "context": "예보 분석 / 관측·예측·서비스",
+        "url": "https://github.com/fortranmentis/marine-forecast-index-stats",
+        "detail": {
+          "intro": "예측 자료에 활동별 기준과 운영 규칙을 적용해 이용자가 이해할 수 있게 제공하는 정보입니다.",
+          "role": "해양 활동별 지수와 예측 제품을 연결해 변경 건수·변수 변화·특보 조건을 집계합니다. 공개 코드에서는 통계 결과를 Excel·CSV·HTML 등으로 내보내며 일부 결과는 콘솔에 표시합니다.",
+          "steps": [
+            "예측·서비스 자료 정렬",
+            "활동별 규칙 확인",
+            "변경 건수·조건 집계",
+            "통계·보고서 출력"
+          ],
+          "takeaway": "지수가 바뀐 이유를 설명하는 통계와 관측 대비 예측 정확도 평가는 목적이 다릅니다.",
+          "introTitle": "어떤 개념인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
+      }
+    ]
   },
   {
     "title": "빅데이터가\n서비스가 되기까지",
@@ -493,24 +580,144 @@ window.SEMINAR_SLIDES = [
         "logo": "python-logo.svg",
         "role": "처리·자동화",
         "url": "https://www.python.org/",
-        "showName": false
+        "showName": false,
+        "context": "AIS 분석 / 처리·병렬화·시각화",
+        "detail": {
+          "intro": "자료 처리와 계산 절차를 코드로 작성하는 프로그래밍 언어입니다.",
+          "role": "AIS 전처리·상태 규칙·지도 렌더링과 프로세스 풀 실행을 연결합니다. 작업별 입력과 결과를 코드로 남깁니다.",
+          "steps": [
+            "입력 준비",
+            "규칙 계산",
+            "병렬 렌더링",
+            "결과 저장"
+          ],
+          "takeaway": "자료 정렬과 조건·결측 처리 기준을 명시하고 결과를 검토하세요.",
+          "introTitle": "어떤 기술인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
       },
       {
         "name": "pandas",
         "logo": "pandas-logo.svg",
         "role": "표·시계열 처리",
         "url": "https://pandas.pydata.org/",
-        "showName": false
+        "showName": false,
+        "context": "AIS 분석 / 처리·병렬화·시각화",
+        "detail": {
+          "intro": "행과 열로 이루어진 표와 시계열 자료를 다루는 Python 라이브러리입니다.",
+          "role": "시간·선박 식별자·속력 등의 표 자료를 정리합니다. 선박별 그룹과 시간 정렬을 바탕으로 궤적을 구성할 수 있도록 준비합니다.",
+          "steps": [
+            "표 읽기",
+            "시간·ID 정리",
+            "선박별 정렬",
+            "분석용 표 준비"
+          ],
+          "takeaway": "자료 정렬과 조건·결측 처리 기준을 명시하고 결과를 검토하세요.",
+          "introTitle": "어떤 기술인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
       },
       {
         "name": "NumPy",
         "logo": "numpy-logo.svg",
         "role": "배열·수치 계산",
         "url": "https://numpy.org/",
-        "showName": false
+        "showName": false,
+        "context": "AIS 분석 / 처리·병렬화·시각화",
+        "detail": {
+          "intro": "여러 수치를 배열로 저장하고 계산하는 Python 라이브러리입니다.",
+          "role": "선박별 시계열에서 필요한 시점을 검색하고 수치 조건을 계산합니다. 공개 코드에서는 numpy.searchsorted로 정렬된 시간 배열의 위치를 찾습니다.",
+          "steps": [
+            "시간 배열 준비",
+            "대상 시점 검색",
+            "수치 조건 계산",
+            "상태·표출에 전달"
+          ],
+          "takeaway": "자료 정렬과 조건·결측 처리 기준을 명시하고 결과를 검토하세요.",
+          "introTitle": "어떤 기술인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
       }
     ],
-    "toolScope": "AIS 분석에 사용한 도구"
+    "toolScope": "처리 단계와 기술을 눌러 상세 보기",
+    "processingDetails": [
+      {
+        "name": "선박별 시간 정렬",
+        "role": "선박 ID · 시간 · 공간 맥락",
+        "context": "AIS 분석 / 처리·병렬화·시각화",
+        "url": "https://github.com/fortranmentis/Busan-AIS-ship-behavior-analysis",
+        "detail": {
+          "intro": "같은 선박의 위치 기록을 시간순으로 연결하고 항로·정박지 같은 공간정보를 붙이는 작업입니다.",
+          "role": "MMSI별 기록을 정렬하고 GeoPandas 공간 결합으로 항로·정박지 포함 여부를 계산합니다. 속력·방위·연속 위치를 주변 지형과 함께 해석할 준비를 합니다.",
+          "steps": [
+            "선박 ID로 구분",
+            "시간순 정렬",
+            "항로·정박지 결합",
+            "궤적과 공간 맥락 확인"
+          ],
+          "takeaway": "AIS 위치만 읽는 것보다 시간과 공간의 맥락을 함께 보면 움직임을 설명하기 쉽습니다.",
+          "introTitle": "어떤 개념인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
+      },
+      {
+        "name": "멀티프로세싱",
+        "role": "독립 렌더링 작업 분담",
+        "context": "AIS 분석 / 처리·병렬화·시각화",
+        "url": "https://github.com/fortranmentis/Busan-AIS-ship-behavior-analysis",
+        "detail": {
+          "intro": "서로 독립적인 작업을 여러 프로세스에 나누어 실행하는 방식입니다.",
+          "role": "시각별 지도 프레임 생성 작업을 프로세스 풀에 나눕니다. 상태를 공유해야 하는 계산은 미리 정리하고, 각 프레임이 독립적으로 처리되도록 구성합니다.",
+          "steps": [
+            "작업 단위 분리",
+            "상태·입력 준비",
+            "프로세스에 분담",
+            "결과 취합"
+          ],
+          "takeaway": "프로세스 수를 늘리면 메모리와 자료 전달 비용도 늘 수 있으므로 항상 빨라지는 것은 아닙니다.",
+          "introTitle": "어떤 개념인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
+      },
+      {
+        "name": "Pool.imap",
+        "role": "입력 순서대로 결과 수집",
+        "context": "AIS 분석 / 처리·병렬화·시각화",
+        "url": "https://github.com/fortranmentis/Busan-AIS-ship-behavior-analysis",
+        "detail": {
+          "intro": "Python 프로세스 풀의 결과를 반복자로 받는 방법입니다. 입력 순서에 맞춰 결과를 돌려줍니다.",
+          "role": "각 시각의 렌더링을 분담한 뒤 프레임을 입력 순서대로 받습니다. 임시 PNG를 저장하고 FFmpeg로 영상을 인코딩하는 공개 코드 흐름에 사용됩니다.",
+          "steps": [
+            "시각별 작업 전달",
+            "병렬 렌더링",
+            "입력 순서로 결과 수집",
+            "프레임 저장·영상 생성"
+          ],
+          "takeaway": "결과를 받는 순서와 실제 작업 완료 순서는 다를 수 있습니다. 이메일 IMAP과는 다른 개념입니다.",
+          "introTitle": "어떤 개념인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
+      },
+      {
+        "name": "선박활동 후보 표출",
+        "role": "정박 · 정류 · 항로 이탈 · 활동",
+        "context": "AIS 분석 / 처리·병렬화·시각화",
+        "url": "https://github.com/fortranmentis/Busan-AIS-ship-behavior-analysis",
+        "detail": {
+          "intro": "속력·방위·이동량·공간 포함 여부를 규칙으로 결합해 움직임과 활동 후보를 표시합니다.",
+          "role": "정박·정류·항로 이탈과 접안·조업·예인 후보를 지도에 표현합니다. 워크숍은 1초 갱신 예시를 소개하며, 공개 코드는 과거 AIS를 PNG·MP4로 렌더링합니다. 현재 실시간 서비스 운영을 검증한 것은 아닙니다.",
+          "steps": [
+            "속력·변위 확인",
+            "공간·시간 조건 적용",
+            "상태 후보 표출",
+            "지도·근거로 검토"
+          ],
+          "takeaway": "후보 표시는 실제 조업·예인·위험 행위가 확인됐다는 뜻이 아닙니다.",
+          "introTitle": "어떤 개념인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
+      }
+    ]
   },
   {
     "title": "데이터 업무에도\n현장이 있습니다",
@@ -682,24 +889,144 @@ window.SEMINAR_SLIDES = [
         "logo": "python-logo.svg",
         "role": "실습 코드의 출발점",
         "url": "https://www.python.org/",
-        "showName": false
+        "showName": false,
+        "context": "빅데이터 실습 / 찾기·분석·개선·비교",
+        "detail": {
+          "intro": "자료 처리와 계산 절차를 코드로 작성하는 프로그래밍 언어입니다.",
+          "role": "공개 자료의 작은 표본으로 분석을 작성하고, 같은 계산을 전체 자료로 확장해보는 학습 출발점입니다.",
+          "steps": [
+            "자료 읽기",
+            "기준 분석",
+            "전체로 확장",
+            "코드·결과 기록"
+          ],
+          "takeaway": "같은 결과인지 확인한 다음 시간·메모리를 비교하세요.",
+          "introTitle": "어떤 기술인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
       },
       {
         "name": "pandas",
         "logo": "pandas-logo.svg",
         "role": "표·집계부터 익히기",
         "url": "https://pandas.pydata.org/",
-        "showName": false
+        "showName": false,
+        "context": "빅데이터 실습 / 찾기·분석·개선·비교",
+        "detail": {
+          "intro": "행과 열로 이루어진 표와 시계열 자료를 다루는 Python 라이브러리입니다.",
+          "role": "표를 읽고 날짜·결측을 처리한 뒤 그룹별 집계를 익힙니다. 전체 읽기와 열 선택·분할 읽기 등의 차이를 같은 자료로 비교해보세요.",
+          "steps": [
+            "표 읽기",
+            "자료형·결측 확인",
+            "그룹별 집계",
+            "기준 결과 보관"
+          ],
+          "takeaway": "같은 결과인지 확인한 다음 시간·메모리를 비교하세요.",
+          "introTitle": "어떤 기술인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
       },
       {
         "name": "Polars",
         "logo": "polars-logo.png",
         "role": "지연 실행 · 열 선택",
         "url": "https://docs.pola.rs/user-guide/lazy/",
-        "showName": true
+        "showName": true,
+        "context": "빅데이터 실습 / 찾기·분석·개선·비교",
+        "detail": {
+          "intro": "열 기반 표 처리와 지연 실행을 제공하는 데이터 처리 라이브러리입니다.",
+          "role": "바로 계산하지 않고 작업 계획을 만드는 Lazy API를 학습해보세요. 필요한 열·필터를 먼저 적용하는 실행 계획을 살펴보고 pandas 기준 결과와 비교합니다.",
+          "steps": [
+            "지연 읽기",
+            "열·필터 지정",
+            "실행 계획 확인",
+            "실행·결과 비교"
+          ],
+          "takeaway": "같은 결과인지 확인한 다음 시간·메모리를 비교하세요.",
+          "introTitle": "어떤 기술인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
       }
     ],
-    "toolScope": "학습하고 비교해볼 도구"
+    "toolScope": "학습 단계와 기술을 눌러 상세 보기",
+    "stageDetails": [
+      {
+        "name": "찾기",
+        "role": "질문 하나와 공개 자료 선택",
+        "context": "빅데이터 실습 / 찾기·분석·개선·비교",
+        "url": "https://www.data.go.kr/",
+        "detail": {
+          "intro": "먼저 답하고 싶은 작은 질문을 정하고 그 질문에 맞는 공개 자료를 고르는 단계입니다.",
+          "role": "예를 들어 특정 지역의 월별 관측값을 집계하는 질문을 정합니다. 이용 조건·컬럼·기간·파일 크기와 저장공간을 확인하고 작은 표본부터 시작합니다.",
+          "steps": [
+            "질문 하나 정하기",
+            "공개 자료 찾기",
+            "스키마·조건 확인",
+            "표본과 목표 정의"
+          ],
+          "takeaway": "용량이 크다는 이유만으로 고르기보다 어떤 결과를 설명할지 먼저 정하세요.",
+          "introTitle": "어떤 개념인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
+      },
+      {
+        "name": "분석",
+        "role": "작은 표본부터 전체로",
+        "context": "빅데이터 실습 / 찾기·분석·개선·비교",
+        "url": "https://www.data.go.kr/",
+        "detail": {
+          "intro": "작은 자료에서 올바른 계산을 완성한 뒤 같은 규칙을 더 큰 자료에 적용하는 단계입니다.",
+          "role": "Python과 pandas로 자료형·날짜·결측을 확인하고 기준 집계 결과를 만듭니다. 이후 분할 읽기나 파일별 처리를 적용하면서 전체 자료로 범위를 늘립니다.",
+          "steps": [
+            "표본 읽기",
+            "결측·자료형 확인",
+            "기준 집계 완성",
+            "전체 자료로 확장"
+          ],
+          "takeaway": "코드·자료 출처·실행 방법과 결과를 Markdown에 남겨 다시 확인할 수 있게 만드세요.",
+          "introTitle": "어떤 개념인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
+      },
+      {
+        "name": "개선",
+        "role": "열 선택 · Parquet · Polars · DuckDB",
+        "context": "빅데이터 실습 / 찾기·분석·개선·비교",
+        "url": "https://docs.pola.rs/user-guide/lazy/",
+        "detail": {
+          "intro": "계산의 의미는 유지하면서 읽는 자료와 연산·메모리 사용을 줄이는 단계입니다.",
+          "role": "필요한 열과 기간만 읽고, 반복 분석에는 Parquet 같은 열 기반 파일을 검토합니다. Polars의 지연 실행과 DuckDB의 SQL 집계를 같은 문제에 적용해 비교해봅니다.",
+          "steps": [
+            "필요한 열·행 선택",
+            "파일 형식 검토",
+            "실행 계획·도구 비교",
+            "같은 집계 재실행"
+          ],
+          "takeaway": "Polars·DuckDB는 학습·비교 후보입니다. 특정 도구가 모든 작업에서 더 빠르다는 뜻은 아닙니다.",
+          "introTitle": "어떤 개념인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
+      },
+      {
+        "name": "비교",
+        "role": "같은 결과 · 시간 · 최대 메모리",
+        "context": "빅데이터 실습 / 찾기·분석·개선·비교",
+        "url": "https://duckdb.org/docs/stable/guides/performance/how_to_tune_workloads",
+        "detail": {
+          "intro": "개선 전후의 결과가 같은지 확인한 뒤 자원 사용과 실행 시간을 비교하는 단계입니다.",
+          "role": "같은 입력과 환경에서 행 수·집계값·결측 처리·정렬을 맞춥니다. 실행 시간과 최대 메모리를 기록하고 캐시·병렬 수·반복 횟수 등 측정 조건도 남깁니다.",
+          "steps": [
+            "동일 입력·환경 준비",
+            "결과 일치 확인",
+            "시간·메모리 측정",
+            "조건·한계 기록"
+          ],
+          "takeaway": "속도만 빨라지고 계산 의미가 달라졌다면 같은 작업을 개선한 것으로 보기 어렵습니다.",
+          "introTitle": "어떤 개념인가요?",
+          "roleTitle": "이 화면에서는 어떻게 쓰나요?"
+        }
+      }
+    ]
   },
   {
     "title": "실무에서 만나게 되는 것,\n학교에서도 겪어보지 않았나요?",

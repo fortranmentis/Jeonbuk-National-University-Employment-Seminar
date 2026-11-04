@@ -172,3 +172,11 @@
 .flow-detail-button:hover{background:#e8f3ff}
 .flow-list .flow-detail-button span{font-size:1.5cqw}
 .flow:has(.flow-detail-button) .flow-list{margin-top:1.8cqw;margin-bottom:1.2cqw}
+
+/* Additional examples reuse the same accessible detail dialog. */
+.comparison .flow-detail-button{background:transparent;border:0;padding:0;border-radius:.35cqw}
+.timeline-detail-button{display:block;width:100%;height:100%;padding:0;text-align:left;border-radius:.4cqw}
+.timeline-detail-button:hover strong,.processing-detail-button:hover{color:#0056b3;text-decoration:underline;text-underline-offset:.2em}
+.processing-detail-button{display:inline;padding:0;text-align:left;font:inherit;line-height:inherit;color:inherit;border-bottom:1px dotted #8daac4}
+.comparison .flow-detail-button span{font-size:1.68cqw}
+.ais-case:has(.processing-detail-button) .case-input ol{line-height:1.5}
