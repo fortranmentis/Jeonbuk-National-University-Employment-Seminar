@@ -133,3 +133,11 @@
 
 - 바다결 AI 예시 화면: marine-travel-AI-agent/docs/v05-desktop.jpg (2026.10.30 확인). https://github.com/fortranmentis/marine-travel-AI-agent/blob/HEAD/docs/v05-desktop.jpg
 - 협업 기관 목록: 발표자가 2026.10.30 제공한 회사 차원의 연구 협업 설명.
+
+## 프로젝트 소속 및 기상대 소개 (2026-11-04)
+
+- 발표자 제공 정보: 바다결은 개인 프로젝트에서 GeoSR 사내 기술개발 업무로 전환되었습니다. 기존 공개 일정 초안 이미지는 사내 기술개발 사례에서 사용하며, 신규 사내 자료는 포함하지 않습니다.
+- 개인 프로젝트는 GPUTERM·한국 화장실 지도·Pocket Weather Station(기상대)으로 구분합니다.
+- [기상대 한국어 안내](https://fortranmentis.github.io/pocket_weather_station_hp/ko/): 기기 기압계 관측, 강수 전망, 야외 고도 기록, Apple Watch 연동, App Store 출시 준비 상태를 확인했습니다.
+- `pocket-weather-home.jpg`: 제품 안내 저장소의 [01-home-600.jpg](https://github.com/fortranmentis/pocket_weather_station_hp/blob/main/assets/screenshots/01-home-600.jpg) 공개 앱 화면입니다. 표시 수치는 예시이며 원본의 영문 UI를 유지합니다.
+- 총 40화면과 50+10분을 유지하고, 인쇄 테스트는 수행하지 않습니다.
