@@ -437,31 +437,75 @@ window.SEMINAR_SLIDES = [
     ],
     "notes": "2026.11.04 발표자 확인: 바다결은 개인 프로젝트에서 GeoSR 사내 기술개발 업무로 전환되었습니다. 해양·기상·관광 공공데이터를 연결하고 AI 에이전트가 도구를 호출해 맞춤형 해양관광 여행 계획을 제안하는 서비스를 개발 중입니다. 개발·연구 단계라는 점을 설명하고 상용 운영·예약·안전 보장이나 검증된 추천 성능을 주장하지 않습니다. 기존 공개 저장소의 일정 초안 화면을 예시로 사용하며 사내 자료를 새로 공개하지 않습니다. AI 활용 파트에서는 자료와 추천 근거를 사람이 검토해야 한다는 메시지로 연결합니다. 개인 앱 세 가지는 뒤의 개인 개발 프로젝트 화면에서 별도로 소개합니다. 기술 설명(2026.11.04 공개 README v0.9.0 확인): 빅데이터가 사라지거나 모든 분야가 AI 에이전트로 대체된다는 뜻이 아닙니다. 자료 수집·정제·검증이라는 기반 위에 모델과 도구 호출, 상태 관리, 사람의 선택을 연결하는 업무 확장으로 설명합니다. FastAPI가 서비스 API를 제공하고 Ollama가 Qwen 모델을 실행합니다. Python의 명시적 일정·날씨·예약 규칙과 typed tools를 연결합니다. 폼 기반 요청은 LangGraph의 생성→검증→조건 부족 시 사용자 선택 대기→재검증→완료 흐름을 사용하고 최대 두 번 재검증합니다. SQLite 체크포인트로 제한된 기간 동안 상태를 복구합니다. 자유 대화는 별도의 제한된 도구 호출 루프입니다. n8n은 정기 자료 수집을, Langfuse는 허용된 실행 단계·시간·보고된 토큰 수 추적을 담당합니다. 원문 프롬프트·내부 추론·출력 전문을 수집한다는 뜻은 아닙니다. 학생들에게 도구 연결·검증·상태 관리·실행 기록을 학습해보라고 제안합니다.",
     "seconds": 60,
-    "toolScope": "바다결의 구현 기술과 역할",
+    "toolScope": "바다결의 구현 기술 · 배지를 눌러 상세 보기",
     "tools": [
       {
         "name": "LangGraph",
         "logo": "langgraph-badge.svg",
         "role": "흐름·상태 관리",
-        "url": "https://github.com/fortranmentis/marine-travel-AI-agent/blob/main/docs/LANGGRAPH.md"
+        "url": "https://github.com/fortranmentis/marine-travel-AI-agent/blob/main/docs/LANGGRAPH.md",
+        "detail": {
+          "intro": "여러 처리 단계를 연결하고, 현재 어디까지 진행됐는지 관리하는 워크플로 도구입니다.",
+          "role": "바다결의 폼 기반 일정 요청에서 생성·검증·사용자 선택·재검증을 연결합니다. SQLite 체크포인트로 진행 상태를 저장하고 정해진 범위 안에서 복구합니다.",
+          "steps": [
+            "일정 초안 생성",
+            "조건 검증",
+            "필요 시 사용자 선택",
+            "재검증·완료"
+          ],
+          "takeaway": "“어떤 순서로 처리하고, 중간에 멈추면 어디서 이어갈까?”를 설계합니다."
+        }
       },
       {
         "name": "FastAPI",
         "logo": "fastapi-badge.svg",
         "role": "서비스 API",
-        "url": "https://github.com/fortranmentis/marine-travel-AI-agent"
+        "url": "https://github.com/fortranmentis/marine-travel-AI-agent",
+        "detail": {
+          "intro": "Python 함수와 데이터를 웹 서비스의 API로 제공하는 프레임워크입니다.",
+          "role": "화면의 여행 계획 요청을 받아 계획 생성·조회·수정 기능을 연결합니다. 모델 실행은 Ollama가, 일정 조건 확인은 Python 규칙이 담당합니다.",
+          "steps": [
+            "화면에서 요청",
+            "API에서 입력 확인",
+            "계획·도구 호출 연결",
+            "상태·결과 응답"
+          ],
+          "takeaway": "“내 분석 코드를 다른 사람이나 화면에서 어떻게 호출하게 할까?”를 해결합니다."
+        }
       },
       {
         "name": "n8n",
         "logo": "n8n-badge.svg",
         "role": "정기 수집 자동화",
-        "url": "https://github.com/fortranmentis/marine-travel-AI-agent/blob/main/docs/WORKFLOWS.md"
+        "url": "https://github.com/fortranmentis/marine-travel-AI-agent/blob/main/docs/WORKFLOWS.md",
+        "detail": {
+          "intro": "정해진 시점과 조건에 따라 작업을 연결해 실행하는 자동화 도구입니다.",
+          "role": "관광·해양 공공데이터 수집 작업을 정기적으로 실행합니다. 정책을 확인해 일별 해양 자료와 주별 관광 자료를 따로 갱신하고 실행 결과를 확인합니다.",
+          "steps": [
+            "갱신 시점 확인",
+            "공공데이터 수집",
+            "검증 후 저장",
+            "실행 결과 확인"
+          ],
+          "takeaway": "“매번 손으로 하던 수집을 어떻게 반복 가능하게 만들까?”를 생각합니다."
+        }
       },
       {
         "name": "Langfuse",
         "logo": "langfuse-badge.svg",
         "role": "실행 추적·관측",
-        "url": "https://github.com/fortranmentis/marine-travel-AI-agent/blob/main/docs/OBSERVABILITY.md"
+        "url": "https://github.com/fortranmentis/marine-travel-AI-agent/blob/main/docs/OBSERVABILITY.md",
+        "detail": {
+          "intro": "AI 실행이 어떤 단계를 거쳤고 얼마나 걸렸는지 관찰하는 도구입니다.",
+          "role": "같은 실행 ID로 모델·도구 단계, 소요 시간, 보고된 토큰 수를 연결해 살펴봅니다. 바다결은 허용된 실행 정보만 남기며 원문 프롬프트·내부 추론·출력 전문은 기록하지 않습니다.",
+          "steps": [
+            "AI 실행",
+            "허용된 단계 기록",
+            "시간·토큰 확인",
+            "지연·오류 구간 개선"
+          ],
+          "takeaway": "“결과만 보지 말고, 비용과 병목을 설명할 수 있을까?”를 확인합니다."
+        }
       }
     ]
   },

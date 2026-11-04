@@ -4,11 +4,17 @@
   const $ = id => document.getElementById(id);
   const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   let index = 0, reading = false, running = false, started = 0, total = 0, lastFocus;
-  const dialogs = ['overview', 'help', 'resources'].map($);
+  const dialogs = ['overview', 'help', 'resources', 'tool-dialog'].map($);
   const lines = value => escape(value).replace(/\n/g, '<br>');
+  const toolDetails = [];
   function toolStrip(s) {
-    const tools = s.tools ? `<div class="tool-section"><p class="tool-scope">${escape(s.toolScope)}</p><div class="tool-strip">${s.tools.map(t=>`<a class="tool-item" href="${escape(t.url)}" target="_blank" rel="noopener noreferrer"><span class="tool-brand"><img src="assets/${escape(t.logo)}" alt="${t.showName?'':escape(t.name)}">${t.showName?`<strong>${escape(t.name)}</strong>`:''}</span><span class="tool-role">${escape(t.role)}</span></a>`).join('')}</div></div>` : '';
-    return tools;
+    if (!s.tools) return '';
+    return `<div class="tool-section"><p class="tool-scope">${escape(s.toolScope)}</p><div class="tool-strip">${s.tools.map(t=>{
+      const brand = `<span class="tool-brand"><img src="assets/${escape(t.logo)}" alt="${t.showName?'':escape(t.name)}">${t.showName?`<strong>${escape(t.name)}</strong>`:''}</span><span class="tool-role">${escape(t.role)}</span>`;
+      if (!t.detail) return `<a class="tool-item" href="${escape(t.url)}" target="_blank" rel="noopener noreferrer">${brand}</a>`;
+      const key = toolDetails.push(t) - 1;
+      return `<button type="button" class="tool-item tool-detail-button" data-tool-detail="${key}" aria-label="${escape(t.name)} 상세 설명" aria-haspopup="dialog" aria-controls="tool-dialog">${brand}</button>`;
+    }).join('')}</div></div>`;
   }
   function links(s, includeTools = true) {
     return (includeTools ? toolStrip(s) : '') + (s.links ? `<div class="slide-links">${s.links.map(([label,url]) => `<a href="${escape(url)}"${url.startsWith('https:') || url.startsWith('assets/') ? ' target="_blank" rel="noopener noreferrer"' : ''}>${escape(label)}</a>`).join('')}</div>` : '');
@@ -91,6 +97,15 @@
     if(match)show(Number(match[1])-1,false);
     else if(location.hash==='#resources')open($('resources'));
   }
+  document.querySelectorAll('[data-tool-detail]').forEach(button=>button.addEventListener('click',()=>{
+    const t = toolDetails[Number(button.dataset.toolDetail)];
+    $('tool-dialog-title').textContent = t.name;
+    $('tool-dialog-role').textContent = t.role;
+    $('tool-dialog-body').innerHTML = `<section><h3>어떤 기술인가요?</h3><p>${escape(t.detail.intro)}</p></section><section><h3>바다결에서는 무엇을 하나요?</h3><p>${escape(t.detail.role)}</p></section><section><h3>흐름으로 살펴보기</h3><ol class="tool-detail-flow">${t.detail.steps.map(step=>`<li>${escape(step)}</li>`).join('')}</ol></section><p class="tool-detail-takeaway">${escape(t.detail.takeaway)}</p>`;
+    $('tool-dialog-source').href = t.url;
+    open($('tool-dialog'));
+  }));
+  $('tool-dialog').addEventListener('cancel',event=>{event.preventDefault();close($('tool-dialog'));});
   $('next').addEventListener('click',()=>show(index+1));
   $('prev').addEventListener('click',()=>show(index-1));
   $('overview-button').addEventListener('click',()=>open($('overview')));
@@ -115,6 +130,7 @@
     if(event.defaultPrevented||event.ctrlKey||event.metaKey||event.altKey||/INPUT|TEXTAREA|SELECT/.test(event.target.tagName))return;
     if(dialogs.some(dialog=>dialog.open))return;
     const key=event.key.toLowerCase();
+    if(key===' ' && event.target.closest('button,a'))return;
     if(['arrowright','pagedown',' ','arrowleft','pageup','home','end','g','n','f','?','escape'].includes(key))event.preventDefault();
     if(['arrowright','pagedown',' '].includes(key)){if(reading)panels[Math.min(index+1,slides.length-1)].scrollIntoView();show(index+1);}
     else if(['arrowleft','pageup'].includes(key)){if(reading)panels[Math.max(index-1,0)].scrollIntoView();show(index-1);}

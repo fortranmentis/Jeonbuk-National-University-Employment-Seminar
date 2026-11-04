@@ -148,3 +148,21 @@
 .research:has(img[src$="marine-travel-example.jpg"]) .tool-brand img{width:11cqw;height:3.1cqw}
 .research:has(img[src$="marine-travel-example.jpg"]) .tool-role{font-size:1.2cqw}
 .research:has(img[src$="marine-travel-example.jpg"]) .slide-links{margin-top:1.2cqw;font-size:1.2cqw}
+
+/* In-deck technology explanations; the slide remains visible behind the modal. */
+.tool-detail-button{padding:0;text-align:left;border-radius:.5cqw}
+.tool-detail-button:hover .tool-brand{filter:brightness(1.15)}
+.tool-detail-button:hover .tool-role{color:var(--blue)}
+#tool-dialog{width:min(820px,calc(100vw - 24px));padding:30px}
+#tool-dialog-role{margin:7px 0 0;color:#0059b3;font-weight:650;font-size:18px}
+#tool-dialog-body{margin-top:22px}
+#tool-dialog-body section{margin:0 0 20px}
+#tool-dialog-body h3{font-size:20px;margin:0 0 8px;letter-spacing:-.025em}
+#tool-dialog-body p{font-size:18px;line-height:1.7;margin:0}
+.tool-detail-flow{display:flex;gap:22px;list-style:none;padding:0;margin:12px 0;flex-wrap:wrap}
+.tool-detail-flow li{position:relative;padding:10px 13px;border-radius:9px;background:#eef6ff;font-size:16px;font-weight:650}
+.tool-detail-flow li+li::before{content:'→';position:absolute;left:-18px;color:var(--blue)}
+#tool-dialog-body .tool-detail-takeaway{padding:15px 17px;border-left:3px solid var(--blue);background:#f5f5f7;border-radius:0 10px 10px 0;font-weight:600}
+#tool-dialog .dialog-footer{justify-content:space-between;border-top:1px solid var(--line);padding-top:18px;margin-top:24px}
+#tool-dialog .dialog-footer button{background:var(--blue);color:#fff;padding:11px 16px;border-radius:9px;font-weight:600}
+@media(max-width:540px){#tool-dialog{padding:20px}#tool-dialog-body p{font-size:16px}.tool-detail-flow{gap:10px;display:grid;grid-template-columns:1fr 1fr}.tool-detail-flow li{font-size:14px}.tool-detail-flow li+li::before{content:none}}
