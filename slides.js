@@ -417,7 +417,7 @@ window.SEMINAR_SLIDES = [
     "emphasis": "현장의 경험을 데이터와 서비스의 맥락으로 연결하기"
   },
   {
-    "title": "공공데이터를\n해양관광 계획으로",
+    "title": "데이터에서\nAI 에이전트까지",
     "layout": "research",
     "chapter": "빅데이터 실무",
     "eyebrow": "현재 담당업무 · AI 에이전트 개발",
@@ -425,9 +425,9 @@ window.SEMINAR_SLIDES = [
     "image": "marine-travel-example.jpg",
     "alt": "바다결 AI 에이전트의 해양관광 여행 일정 초안 예시",
     "items": [
-      "해양·기상·관광 공공데이터 연결",
-      "AI 에이전트로 맞춤형 일정 초안 제안",
-      "자료와 추천 근거를 함께 검토"
+      "공공데이터 수집·정제 → Python 도구",
+      "일정 생성 → 검증 → 선택 → 재검증",
+      "실행 단계·시간·토큰을 기록해 개선"
     ],
     "links": [
       [
@@ -435,8 +435,35 @@ window.SEMINAR_SLIDES = [
         "https://github.com/fortranmentis/marine-travel-AI-agent"
       ]
     ],
-    "notes": "2026.11.04 발표자 확인: 바다결은 개인 프로젝트에서 GeoSR 사내 기술개발 업무로 전환되었습니다. 해양·기상·관광 공공데이터를 연결하고 AI 에이전트가 도구를 호출해 맞춤형 해양관광 여행 계획을 제안하는 서비스를 개발 중입니다. 개발·연구 단계라는 점을 설명하고 상용 운영·예약·안전 보장이나 검증된 추천 성능을 주장하지 않습니다. 기존 공개 저장소의 일정 초안 화면을 예시로 사용하며 사내 자료를 새로 공개하지 않습니다. AI 활용 파트에서는 자료와 추천 근거를 사람이 검토해야 한다는 메시지로 연결합니다. 개인 앱 세 가지는 뒤의 개인 개발 프로젝트 화면에서 별도로 소개합니다.",
-    "seconds": 60
+    "notes": "2026.11.04 발표자 확인: 바다결은 개인 프로젝트에서 GeoSR 사내 기술개발 업무로 전환되었습니다. 해양·기상·관광 공공데이터를 연결하고 AI 에이전트가 도구를 호출해 맞춤형 해양관광 여행 계획을 제안하는 서비스를 개발 중입니다. 개발·연구 단계라는 점을 설명하고 상용 운영·예약·안전 보장이나 검증된 추천 성능을 주장하지 않습니다. 기존 공개 저장소의 일정 초안 화면을 예시로 사용하며 사내 자료를 새로 공개하지 않습니다. AI 활용 파트에서는 자료와 추천 근거를 사람이 검토해야 한다는 메시지로 연결합니다. 개인 앱 세 가지는 뒤의 개인 개발 프로젝트 화면에서 별도로 소개합니다. 기술 설명(2026.11.04 공개 README v0.9.0 확인): 빅데이터가 사라지거나 모든 분야가 AI 에이전트로 대체된다는 뜻이 아닙니다. 자료 수집·정제·검증이라는 기반 위에 모델과 도구 호출, 상태 관리, 사람의 선택을 연결하는 업무 확장으로 설명합니다. FastAPI가 서비스 API를 제공하고 Ollama가 Qwen 모델을 실행합니다. Python의 명시적 일정·날씨·예약 규칙과 typed tools를 연결합니다. 폼 기반 요청은 LangGraph의 생성→검증→조건 부족 시 사용자 선택 대기→재검증→완료 흐름을 사용하고 최대 두 번 재검증합니다. SQLite 체크포인트로 제한된 기간 동안 상태를 복구합니다. 자유 대화는 별도의 제한된 도구 호출 루프입니다. n8n은 정기 자료 수집을, Langfuse는 허용된 실행 단계·시간·보고된 토큰 수 추적을 담당합니다. 원문 프롬프트·내부 추론·출력 전문을 수집한다는 뜻은 아닙니다. 학생들에게 도구 연결·검증·상태 관리·실행 기록을 학습해보라고 제안합니다.",
+    "seconds": 60,
+    "toolScope": "바다결의 구현 기술과 역할",
+    "tools": [
+      {
+        "name": "LangGraph",
+        "logo": "langgraph-badge.svg",
+        "role": "흐름·상태 관리",
+        "url": "https://github.com/fortranmentis/marine-travel-AI-agent/blob/main/docs/LANGGRAPH.md"
+      },
+      {
+        "name": "FastAPI",
+        "logo": "fastapi-badge.svg",
+        "role": "서비스 API",
+        "url": "https://github.com/fortranmentis/marine-travel-AI-agent"
+      },
+      {
+        "name": "n8n",
+        "logo": "n8n-badge.svg",
+        "role": "정기 수집 자동화",
+        "url": "https://github.com/fortranmentis/marine-travel-AI-agent/blob/main/docs/WORKFLOWS.md"
+      },
+      {
+        "name": "Langfuse",
+        "logo": "langfuse-badge.svg",
+        "role": "실행 추적·관측",
+        "url": "https://github.com/fortranmentis/marine-travel-AI-agent/blob/main/docs/OBSERVABILITY.md"
+      }
+    ]
   },
   {
     "title": "빅데이터 학습,\n도구를 역할별로 익혀보세요",

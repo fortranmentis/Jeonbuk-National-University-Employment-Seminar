@@ -137,3 +137,14 @@
 /* Company AI development case: retain a wide, readable itinerary example. */
 .research:has(img[src$="marine-travel-example.jpg"]){grid-template-columns:38% 1fr;gap:3cqw}
 .research:has(img[src$="marine-travel-example.jpg"]) h2{font-size:3.8cqw}
+
+/* Agent case: technology roles and data-to-agent workflow. */
+.research:has(img[src$="marine-travel-example.jpg"]) h2{font-size:3.6cqw;margin-bottom:1.3cqw}
+.research:has(img[src$="marine-travel-example.jpg"]) .word-list li{font-size:1.5cqw;line-height:1.5}
+.research:has(img[src$="marine-travel-example.jpg"]) .tool-section{margin-top:1.3cqw}
+.research:has(img[src$="marine-travel-example.jpg"]) .tool-scope{margin-bottom:.7cqw!important}
+.research:has(img[src$="marine-travel-example.jpg"]) .tool-strip{display:grid;grid-template-columns:1fr 1fr;gap:1cqw 1.5cqw}
+.research:has(img[src$="marine-travel-example.jpg"]) .tool-item{min-width:0;gap:.35cqw}
+.research:has(img[src$="marine-travel-example.jpg"]) .tool-brand img{width:11cqw;height:3.1cqw}
+.research:has(img[src$="marine-travel-example.jpg"]) .tool-role{font-size:1.2cqw}
+.research:has(img[src$="marine-travel-example.jpg"]) .slide-links{margin-top:1.2cqw;font-size:1.2cqw}

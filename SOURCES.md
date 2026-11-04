@@ -141,3 +141,7 @@
 - [기상대 한국어 안내](https://fortranmentis.github.io/pocket_weather_station_hp/ko/): 기기 기압계 관측, 강수 전망, 야외 고도 기록, Apple Watch 연동, App Store 출시 준비 상태를 확인했습니다.
 - `pocket-weather-home.jpg`: 제품 안내 저장소의 [01-home-600.jpg](https://github.com/fortranmentis/pocket_weather_station_hp/blob/main/assets/screenshots/01-home-600.jpg) 공개 앱 화면입니다. 표시 수치는 예시이며 원본의 영문 UI를 유지합니다.
 - 총 40화면과 50+10분을 유지하고, 인쇄 테스트는 수행하지 않습니다.
+
+## 바다결 기술 설명 (2026-11-04)
+
+[공개 README v0.9.0](https://github.com/fortranmentis/marine-travel-AI-agent)와 연결된 LANGGRAPH.md·WORKFLOWS.md·OBSERVABILITY.md 안내를 기준으로 LangGraph 상태 흐름, FastAPI API, Ollama 모델 실행, n8n 자료 수집과 Langfuse 실행 추적을 설명합니다. 폼 기반 LangGraph와 자유 대화 도구 루프는 구분합니다. 빅데이터가 전면 대체된다는 추세 주장은 하지 않고 데이터 기반 위에 에이전트를 연결하는 사례로 소개합니다. 네 개의 기술 배지는 기존 GitHub 프로필의 로컬 SVG 디자인을 재사용했습니다.
