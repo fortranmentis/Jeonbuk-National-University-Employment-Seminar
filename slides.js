@@ -417,28 +417,6 @@ window.SEMINAR_SLIDES = [
     "emphasis": "빅데이터 실무: 자료 처리 + 설명 + 협업 + 운영"
   },
   {
-    "title": "공공데이터를\n해양관광 계획으로",
-    "layout": "research",
-    "chapter": "빅데이터 실무",
-    "eyebrow": "현재 담당업무 · AI 에이전트 개발",
-    "subtitle": "바다결 · GeoSR 사내 기술개발",
-    "image": "marine-travel-example.jpg",
-    "alt": "바다결 AI 에이전트의 해양관광 여행 일정 초안 예시",
-    "items": [
-      "해양·기상·관광 공공데이터 연결",
-      "AI 에이전트로 맞춤형 일정 초안 제안",
-      "자료와 추천 근거를 함께 검토"
-    ],
-    "links": [
-      [
-        "공개 기술 소개",
-        "https://github.com/fortranmentis/marine-travel-AI-agent"
-      ]
-    ],
-    "notes": "2026.11.04 발표자 확인: 바다결은 개인 프로젝트에서 GeoSR 사내 기술개발 업무로 전환되었습니다. 해양·기상·관광 공공데이터를 연결하고 AI 에이전트가 도구를 호출해 맞춤형 해양관광 여행 계획을 제안하는 서비스를 개발 중입니다. 개발·연구 단계라는 점을 설명하고 상용 운영·예약·안전 보장이나 검증된 추천 성능을 주장하지 않습니다. 기존 공개 저장소의 일정 초안 화면을 예시로 사용하며 사내 자료를 새로 공개하지 않습니다. AI 활용 파트에서는 자료와 추천 근거를 사람이 검토해야 한다는 메시지로 연결합니다. 개인 앱 세 가지는 뒤의 개인 개발 프로젝트 화면에서 별도로 소개합니다.",
-    "seconds": 60
-  },
-  {
     "title": "빅데이터 학습,\n도구를 역할별로 익혀보세요",
     "layout": "mapping",
     "chapter": "빅데이터 시작해보기",
@@ -586,46 +564,6 @@ window.SEMINAR_SLIDES = [
     "emphasis": "근거를 읽고, 코드를 실행하고, 설명되지 않는 부분은 수정 요청하기"
   },
   {
-    "title": "관심을\n실제로 쓰는 도구로",
-    "layout": "project-showcase",
-    "chapter": "AI 활용과 프로젝트",
-    "images": [
-      [
-        "gputerm-terminal.webp",
-        "GPUTERM iOS 터미널 화면",
-        "GPUTERM"
-      ],
-      [
-        "toilet-map.webp",
-        "한국 화장실 지도 iOS 지도 화면",
-        "한국 화장실 지도"
-      ],
-      [
-        "pocket-weather-home.jpg",
-        "Pocket Weather Station（기상대）의 기압·강수 전망 화면",
-        "기상대 · Pocket Weather Station"
-      ]
-    ],
-    "subtitle": "원격 서버 · 생활 공간정보 · 개인 기상 관측",
-    "links": [
-      [
-        "GPUTERM",
-        "https://fortranmentis.github.io/GPUTERM/ko/"
-      ],
-      [
-        "한국 화장실 지도",
-        "https://fortranmentis.github.io/Korea-Toilet-Map/"
-      ],
-      [
-        "Pocket Weather Station",
-        "https://fortranmentis.github.io/pocket_weather_station_hp/ko/"
-      ]
-    ],
-    "notes": "개인 프로젝트는 GPUTERM, 한국 화장실 지도, Pocket Weather Station(기상대) 세 가지입니다. GPUTERM은 원격 서버의 SSH·SFTP·모니터링, 한국 화장실 지도는 로컬 공간정보 기반 검색, 기상대는 기기 기압계 관측과 외부 날씨 자료를 연결합니다. 기상대는 기압 변화·강수 전망·야외 고도 기록을 제공하며 iPhone·iPad·Apple Watch 연동을 소개합니다. 기온·습도는 외부 날씨 정보이며 휴대전화가 직접 측정하는 값이 아닙니다. 2026.11.04 안내 페이지 기준 기상대는 App Store 출시 준비 중입니다. GPUTERM과 한국 화장실 지도는 iOS App Store 제공, Android 출시 준비 상태이며 최신 소스와 배포 버전을 구분합니다. 문제 설정·개발·검토·기록의 과정을 소개합니다. 바다결은 현재 GeoSR 사내 기술개발이므로 개인 프로젝트에 포함하지 않습니다.",
-    "seconds": 50,
-    "eyebrow": "개인 개발 프로젝트"
-  },
-  {
     "title": "결과물 완성은 기본,\n프로젝트를 운영하는 힘까지",
     "layout": "flow",
     "chapter": "AI 활용과 프로젝트",
@@ -675,6 +613,68 @@ window.SEMINAR_SLIDES = [
     "notes": "Python 코드를 많이 만들고 AI와 제안·실행·반박·수정을 반복해보라는 메시지입니다. “AI와 많이 싸워보고 토큰도 써보세요”라는 가벼운 표현은 많이 시도하고 검토하라는 의미로 설명하며 사용량 자체가 학습 성과라는 뜻으로 말하지 않습니다. 학교에서 어떤 도구를 쓰는지, “요즘 학교에서는 Gemini 무료 지원이 있나요?”라고 학생에게 질문할 수 있지만 현재 학교별 제공 여부·가격·지원기간을 단정하지 않습니다. 원자료 전체를 LLM에 넣기보다 Python·SQL로 집계하고 필요한 표본·스키마·요약·근거만 전달합니다. 연산자원·실행시간과 LLM 토큰은 서로 다른 비용이므로 각각 측정합니다. 원자료·단위·결측·가정을 놓치면서 토큰만 줄이지 않습니다. README.md나 분석 노트에는 자료 버전·출처·전처리·명령어·의존성·시드(해당할 때)·검증과 해석을, 코드에는 실제 연산을, 결과 폴더에는 산출물을 남겨 다른 사람이 재실행할 수 있게 합니다. 학교 과제에서 사용·표시가 허용된 범위 안에서 학습하고 결과의 내용을 본인이 설명할 수 있어야 합니다. 학생 때의 탐색과 시행착오는 경험을 넓히는 기회이고, 실무의 토큰·연산 최적화는 같은 결과 품질을 유지하면서 불필요한 입력·반복 작업을 줄이는 과정이라고 구분합니다.",
     "seconds": 70,
     "emphasis": "목표는 같은 품질의 결과를 더 적은 연산자원과 토큰으로 만드는 것"
+  },
+  {
+    "title": "공공데이터를\n해양관광 계획으로",
+    "layout": "research",
+    "chapter": "AI 활용과 프로젝트",
+    "eyebrow": "현재 담당업무 · AI 에이전트 개발",
+    "subtitle": "바다결 · GeoSR 사내 기술개발",
+    "image": "marine-travel-example.jpg",
+    "alt": "바다결 AI 에이전트의 해양관광 여행 일정 초안 예시",
+    "items": [
+      "해양·기상·관광 공공데이터 연결",
+      "AI 에이전트로 맞춤형 일정 초안 제안",
+      "자료와 추천 근거를 함께 검토"
+    ],
+    "links": [
+      [
+        "공개 기술 소개",
+        "https://github.com/fortranmentis/marine-travel-AI-agent"
+      ]
+    ],
+    "notes": "2026.11.04 발표자 확인: 바다결은 개인 프로젝트에서 GeoSR 사내 기술개발 업무로 전환되었습니다. 해양·기상·관광 공공데이터를 연결하고 AI 에이전트가 도구를 호출해 맞춤형 해양관광 여행 계획을 제안하는 서비스를 개발 중입니다. 개발·연구 단계라는 점을 설명하고 상용 운영·예약·안전 보장이나 검증된 추천 성능을 주장하지 않습니다. 기존 공개 저장소의 일정 초안 화면을 예시로 사용하며 사내 자료를 새로 공개하지 않습니다. AI 활용 파트에서는 자료와 추천 근거를 사람이 검토해야 한다는 메시지로 연결합니다. 개인 앱 세 가지는 뒤의 개인 개발 프로젝트 화면에서 별도로 소개합니다.",
+    "seconds": 60
+  },
+  {
+    "title": "관심을\n실제로 쓰는 도구로",
+    "layout": "project-showcase",
+    "chapter": "AI 활용과 프로젝트",
+    "images": [
+      [
+        "gputerm-terminal.webp",
+        "GPUTERM iOS 터미널 화면",
+        "GPUTERM"
+      ],
+      [
+        "toilet-map.webp",
+        "한국 화장실 지도 iOS 지도 화면",
+        "한국 화장실 지도"
+      ],
+      [
+        "pocket-weather-home.jpg",
+        "Pocket Weather Station（기상대）의 기압·강수 전망 화면",
+        "기상대 · Pocket Weather Station"
+      ]
+    ],
+    "subtitle": "원격 서버 · 생활 공간정보 · 개인 기상 관측",
+    "links": [
+      [
+        "GPUTERM",
+        "https://fortranmentis.github.io/GPUTERM/ko/"
+      ],
+      [
+        "한국 화장실 지도",
+        "https://fortranmentis.github.io/Korea-Toilet-Map/"
+      ],
+      [
+        "Pocket Weather Station",
+        "https://fortranmentis.github.io/pocket_weather_station_hp/ko/"
+      ]
+    ],
+    "notes": "개인 프로젝트는 GPUTERM, 한국 화장실 지도, Pocket Weather Station(기상대) 세 가지입니다. GPUTERM은 원격 서버의 SSH·SFTP·모니터링, 한국 화장실 지도는 로컬 공간정보 기반 검색, 기상대는 기기 기압계 관측과 외부 날씨 자료를 연결합니다. 기상대는 기압 변화·강수 전망·야외 고도 기록을 제공하며 iPhone·iPad·Apple Watch 연동을 소개합니다. 기온·습도는 외부 날씨 정보이며 휴대전화가 직접 측정하는 값이 아닙니다. 2026.11.04 안내 페이지 기준 기상대는 App Store 출시 준비 중입니다. GPUTERM과 한국 화장실 지도는 iOS App Store 제공, Android 출시 준비 상태이며 최신 소스와 배포 버전을 구분합니다. 문제 설정·개발·검토·기록의 과정을 소개합니다. 바다결은 현재 GeoSR 사내 기술개발이므로 개인 프로젝트에 포함하지 않습니다.",
+    "seconds": 50,
+    "eyebrow": "개인 개발 프로젝트"
   },
   {
     "title": "GeoSR은\n어떤 회사인가요?",
