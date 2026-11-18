@@ -5,10 +5,10 @@ const root = path.resolve(import.meta.dirname,'..');
 const ctx = {window:{}};
 vm.runInNewContext(fs.readFileSync(path.join(root,'slides.js'),'utf8'),ctx);
 const slides = ctx.window.SEMINAR_SLIDES;
-if(slides.length!==41)throw Error('Expected 41 slides');
+if(slides.length!==48)throw Error('Expected 48 slides');
 if(slides.slice(0,-1).reduce((sum,s)=>sum+s.seconds,0)!==3000)throw Error('Expected 50-minute talk');
 if(slides.at(-1).seconds!==600)throw Error('Expected 10-minute Q&A');
-const assets = new Set(['favicon.svg','seminar-qr.svg']);
+const assets = new Set(['favicon.svg']);
 for(const s of slides){
  if(!s.title||!s.chapter||!s.notes)throw Error('Missing slide content');
  if(s.image){if(!s.alt)throw Error('Image alt required');assets.add(s.image);}

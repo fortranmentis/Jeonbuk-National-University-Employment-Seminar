@@ -4,7 +4,7 @@
   const $ = id => document.getElementById(id);
   const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   let index = 0, reading = false, running = false, started = 0, total = 0, lastFocus;
-  const dialogs = ['overview', 'help', 'resources', 'tool-dialog'].map($);
+  const dialogs = ['overview', 'help', 'resources', 'tool-dialog', 'image-dialog'].map($);
   const lines = value => escape(value).replace(/\n/g, '<br>');
   const toolDetails = [];
   function detailTrigger(t, content, className) {
@@ -13,7 +13,7 @@
   }
   function toolStrip(s) {
     if (!s.tools) return '';
-    return `<div class="tool-section"><p class="tool-scope">${escape(s.toolScope)}</p><div class="tool-strip">${s.tools.map(t=>{
+    return `<div class="tool-section">${s.toolScope ? `<p class="tool-scope">${escape(s.toolScope)}</p>` : ''}<div class="tool-strip">${s.tools.map(t=>{
       const brand = `<span class="tool-brand"><img src="assets/${escape(t.logo)}" alt="${t.showName?'':escape(t.name)}">${t.showName?`<strong>${escape(t.name)}</strong>`:''}</span><span class="tool-role">${escape(t.role)}</span>`;
       if (!t.detail) return `<a class="tool-item" href="${escape(t.url)}" target="_blank" rel="noopener noreferrer">${brand}</a>`;
       return detailTrigger(t, brand, 'tool-item tool-detail-button');
@@ -27,6 +27,11 @@
   }
   function list(s, kind) {
     if (!s.items) return '';
+    if (kind === 'agenda') return `<ol class="agenda-list">${s.items.map(([number, name]) => {
+      const current = name === s.agendaHighlight;
+      return `<li${current ? ' aria-current="step"' : ''}><span aria-hidden="true">${escape(number)}</span>${escape(name)}</li>`;
+    }).join('')}</ol>`;
+    if (kind === 'recruitment-fields') return `<ul class="recruitment-fields-list">${s.items.map(name => `<li>${escape(name)}</li>`).join('')}</ul>`;
     if (kind === 'recruitment') return `<ol class="recruitment-steps">${s.items.map(([n,label])=>`<li><span class="step-number">${escape(n)}</span><strong>${escape(label)}</strong>${label==='면접'?`<p>${escape(s.interviewNote)}</p>`:''}</li>`).join('')}</ol>`;
     if (kind === 'credential-cards') return `<div class="credential-groups">${s.items.map(([label,names],i)=>`<section class="credential-group ${i?'candidate':'held'}"><h3>${lines(label)}</h3><ul>${names.split(/\n| · /).map(name=>`<li>${escape(name)}</li>`).join('')}</ul></section>`).join('')}</div>`;
     if (kind === 'graduate-advice' || kind === 'words' || kind === 'company' || kind === 'qa' || kind === 'research') return `<ul class="word-list">${s.items.map(x => `<li>${escape(x)}</li>`).join('')}</ul>`;
@@ -35,7 +40,7 @@
       return `<div>${s.stageDetails?.[i] ? detailTrigger(s.stageDetails[i], content, 'timeline-detail-button') : content}</div>`;
     }).join('')}</div>`;
     if (kind === 'salary') return `<div class="salary-pair">${s.items.map(([a,b,c])=>`<div><p class="degree">${escape(a)}</p><strong>${escape(b)}</strong><p class="unit">${escape(c)}</p></div>`).join('')}</div>`;
-    if (['mapping','role','roles','credentials','service-photo','docker-intro','partners','agenda'].includes(kind)) return `<div class="role-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${lines(b)}</p></div>`).join('')}</div>`;
+    if (['mapping','role','roles','credentials','service-photo','docker-intro','partners'].includes(kind)) return `<div class="role-list">${s.items.map(([a,b])=>`<div><strong>${escape(a)}</strong><p>${lines(b)}</p></div>`).join('')}</div>`;
     return `<div class="flow-list">${s.items.map(([a,b],i)=>{
       const content = `<strong>${escape(a)}</strong><span>${escape(b)}</span>`;
       return `<div>${s.stageDetails?.[i] ? detailTrigger(s.stageDetails[i], content, 'flow-detail-button') : content}</div>`;
@@ -51,16 +56,23 @@
       + `<div class="case-comparison"><div class="case-input"><h3>처리 전 · 위치·시간 기록</h3><div class="case-fields" aria-label="입력 필드 개념도">${s.inputFields.map(field=>`<p>${escape(field)}</p>`).join('')}</div><ol>${s.processing.map((step,i)=>`<li>${s.processingDetails?.[i] ? detailTrigger(s.processingDetails[i],escape(step),'processing-detail-button') : escape(step)}</li>`).join('')}</ol>${toolStrip(s)}${links(s, false)}</div><span class="case-arrow" aria-hidden="true">→</span><figure><figcaption>${escape(s.figcaption || '처리 후 · 상태 후보 시각화')}</figcaption>${s.video ? `<video src="assets/${escape(s.video)}" poster="assets/${escape(s.poster || s.image)}" autoplay muted loop playsinline preload="auto" aria-label="${escape(s.alt)}"></video>` : `<a href="assets/${escape(s.image)}" target="_blank" rel="noopener noreferrer"><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy"></a>`}</figure></div>`
       ;
     if (s.layout === 'timeline-photo') content += s.images ? `<div class="timeline-photo-images">${s.images.map(([src,alt,caption])=>`<figure><img src="assets/${escape(src)}" alt="${escape(alt)}" loading="lazy"><figcaption>${escape(caption)}</figcaption></figure>`).join('')}</div>` : `<figure class="timeline-photo-image"><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy"></figure>`;
-    if (s.layout === 'research' || s.layout === 'service-photo') content = `<div>${content}</div><figure><img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy" decoding="async"></figure>`;
+    if (s.layout === 'research' || s.layout === 'service-photo') {
+      const image = `<img src="assets/${escape(s.image)}" alt="${escape(s.alt)}" loading="lazy" decoding="async">`;
+      const preview = s.zoomImage
+        ? `<button type="button" class="image-zoom" aria-haspopup="dialog" aria-controls="image-dialog" aria-label="이력서 크게 보기">${image}<span>이력서 크게 보기 ↗</span></button>`
+        : image;
+      content = `<div>${content}</div><figure>${preview}</figure>`;
+    }
     if (s.layout === 'duo') content = heading(s,i) + pictures(s) + links(s);
     if (s.layout === 'apps' || s.layout === 'project-showcase') content = `<div>${content}</div>${pictures(s)}`;
-    if (s.layout === 'closing') content += '<img class="qr" src="assets/seminar-qr.svg" alt="강연 웹페이지 주소 QR 코드">';
+    if (s.caption) content += `<p class="slide-caption">${escape(s.caption)}</p>`;
     if (s.byline) content += `<p class="byline">${escape(s.byline)}</p>`;
     if (s.emphasis) content += `<p class="key-message">${escape(s.emphasis)}</p>`;
     content += `<p class="slide-chapter">${escape(s.chapter)}</p>`;
-    if (s.footer) content += `<p class="slide-footer">${escape(s.footer)}</p>`;
+    if (s.footer) content += `<p class="slide-footer">${lines(s.footer)}</p>`;
     return `<section class="slide ${escape(s.layout)}${s.footerProminent ? ' footer-prominent' : ''}" id="slide-${i+1}" data-slide="${i+1}" aria-labelledby="title-${i+1}"${s.image && ['photo','cover'].includes(s.layout) ? ` style="--photo:url('assets/${escape(s.image)}')"` : ''}${i ? ' hidden' : ''}>${content}</section>`;
   }).join('');
+  $('slide-count').textContent = `${slides.length}개 화면`;
   const panels = [...document.querySelectorAll('.slide')];
   const chapters = [];
   slides.forEach((s,i) => {
@@ -115,7 +127,19 @@
     $('tool-dialog-source').href = t.url;
     open($('tool-dialog'));
   }));
-  $('tool-dialog').addEventListener('cancel',event=>{event.preventDefault();close($('tool-dialog'));});
+  document.querySelectorAll('.image-zoom').forEach(button => button.addEventListener('click', () => {
+    const preview = button.querySelector('img');
+    const fullImage = $('image-dialog-preview');
+    fullImage.src = preview.src;
+    fullImage.alt = preview.alt;
+    open($('image-dialog'));
+  }));
+  for (const id of ['tool-dialog', 'image-dialog']) {
+    $(id).addEventListener('cancel', event => {
+      event.preventDefault();
+      close($(id));
+    });
+  }
   $('next').addEventListener('click',()=>show(index+1));
   $('prev').addEventListener('click',()=>show(index-1));
   $('overview-button').addEventListener('click',()=>open($('overview')));
