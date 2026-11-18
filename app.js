@@ -31,7 +31,9 @@
       const current = name === s.agendaHighlight;
       return `<li${current ? ' aria-current="step"' : ''}><span aria-hidden="true">${escape(number)}</span>${escape(name)}</li>`;
     }).join('')}</ol>`;
-    if (kind === 'recruitment-fields') return `<ul class="recruitment-fields-list">${s.items.map(name => `<li>${escape(name)}</li>`).join('')}</ul>`;
+    if (kind === 'recruitment-fields') return `<ul class="recruitment-fields-list">${s.items.map(([name, duty]) =>
+      `<li><strong>${escape(name)}</strong><p>${escape(duty)}</p></li>`
+    ).join('')}</ul>`;
     if (kind === 'recruitment') return `<ol class="recruitment-steps">${s.items.map(([n,label])=>`<li><span class="step-number">${escape(n)}</span><strong>${escape(label)}</strong>${label==='면접'?`<p>${escape(s.interviewNote)}</p>`:''}</li>`).join('')}</ol>`;
     if (kind === 'credential-cards') return `<div class="credential-groups">${s.items.map(([label,names],i)=>`<section class="credential-group ${i?'candidate':'held'}"><h3>${lines(label)}</h3><ul>${names.split(/\n| · /).map(name=>`<li>${escape(name)}</li>`).join('')}</ul></section>`).join('')}</div>`;
     if (kind === 'graduate-advice' || kind === 'words' || kind === 'company' || kind === 'qa' || kind === 'research') return `<ul class="word-list">${s.items.map(x => `<li>${escape(x)}</li>`).join('')}</ul>`;
