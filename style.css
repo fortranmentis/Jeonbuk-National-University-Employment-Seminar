@@ -189,3 +189,7 @@
 .ais-case .case-comparison figure figcaption{text-align:center}
 .ais-case .case-comparison video{flex:1;min-height:0;width:100%;height:auto}
 .ais-case .slide-chapter{z-index:2}
+/* Larger resume example: full slide height on the right */
+.research:has(img[src$="resume-example.webp"]){grid-template-columns:1fr 40cqw}
+.research:has(img[src$="resume-example.webp"]) figure{position:absolute;right:4cqw;top:3.6cqw;bottom:2cqw;width:40cqw;height:auto;z-index:1}
+.research:has(img[src$="resume-example.webp"]) figure img{width:100%;height:100%;max-height:none;object-fit:contain;border:0;box-shadow:none;filter:drop-shadow(0 .5cqw 1.2cqw rgba(0,0,0,.14))}
