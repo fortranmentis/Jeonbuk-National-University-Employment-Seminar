@@ -82,12 +82,6 @@
     chapters.at(-1).entries.push({slide:s,index:i});
   });
   $('slide-index').innerHTML = chapters.map((chapter,chapterIndex)=>`<section class="index-chapter"><h3>${String(chapterIndex+1).padStart(2,'0')} / ${escape(chapter.name)}</h3><div class="index-entries">${chapter.entries.map(({slide:s,index:i})=>`<button data-go="${i}"><span>${String(i+1).padStart(2,'0')}</span>${escape(s.title.replace(/\n/g,' '))}</button>`).join('')}</div></section>`).join('');
-  function notesUpdate() {
-    const s = slides[index];
-    $('notes-title').textContent = s.title.replace(/\n/g,' ');
-    $('notes-time').textContent = `${s.chapter} · 권장 ${Math.floor(s.seconds/60)}분 ${s.seconds%60}초`;
-    $('notes-body').textContent = s.notes;
-  }
   function show(n, writeHash = true, announce = true) {
     index = Math.min(slides.length-1, Math.max(0,n));
     panels.forEach((panel,i) => {
@@ -100,7 +94,6 @@
     $('next').disabled = index===slides.length-1;
     $('progress').style.width = `${(index+1)/slides.length*100}%`;
     document.querySelectorAll('[data-go]').forEach((button,i)=>{if(i===index)button.setAttribute('aria-current','step');else button.removeAttribute('aria-current');});
-    notesUpdate();
     if (writeHash) history.replaceState(null,'',`#slide-${index+1}`);
     if (announce) $('announcement').textContent = `${index+1} / ${slides.length}. ${slides[index].title.replace(/\n/g,' ')}`;
     if (!reading) window.scrollTo({top:0,behavior:'instant'});
@@ -151,9 +144,6 @@
   document.querySelectorAll('dialog [data-close]').forEach(button=>button.addEventListener('click',()=>close(button.closest('dialog'))));
   dialogs.forEach(dialog=>dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)close(dialog);}}));
   document.querySelectorAll('[data-go]').forEach(button=>button.addEventListener('click',()=>{close($('overview'));show(Number(button.dataset.go));if(reading)panels[index].scrollIntoView({block:'start',behavior:'instant'});}));
-  function toggleNotes() { $('notes').hidden=!$('notes').hidden;$('notes-button').setAttribute('aria-pressed',String(!$('notes').hidden)); }
-  $('notes-button').addEventListener('click',toggleNotes);
-  $('notes-close').addEventListener('click',toggleNotes);
   $('read-button').addEventListener('click',()=>{close($('overview'));setReading(!reading);});
   $('print-button').addEventListener('click',()=>{close($('overview'));window.print();});
   async function fullscreen() {
@@ -168,16 +158,15 @@
     if(dialogs.some(dialog=>dialog.open))return;
     const key=event.key.toLowerCase();
     if(key===' ' && event.target.closest('button,a'))return;
-    if(['arrowright','pagedown',' ','arrowleft','pageup','home','end','g','n','f','?','escape'].includes(key))event.preventDefault();
+    if(['arrowright','pagedown',' ','arrowleft','pageup','home','end','g','f','?','escape'].includes(key))event.preventDefault();
     if(['arrowright','pagedown',' '].includes(key)){if(reading)panels[Math.min(index+1,slides.length-1)].scrollIntoView();show(index+1);}
     else if(['arrowleft','pageup'].includes(key)){if(reading)panels[Math.max(index-1,0)].scrollIntoView();show(index-1);}
     else if(key==='home')show(0);
     else if(key==='end')show(slides.length-1);
     else if(key==='g')open($('overview'));
-    else if(key==='n')toggleNotes();
     else if(key==='f')fullscreen();
     else if(key==='?')open($('help'));
-    else if(key==='escape'){if(!$('notes').hidden)toggleNotes();else if(reading)setReading(false);}
+    else if(key==='escape' && reading)setReading(false);
   });
   let pointer;
   $('stage').addEventListener('pointerdown',event=>{if(event.pointerType==='touch'&&!event.target.closest('a,button'))pointer={x:event.clientX,y:event.clientY};});

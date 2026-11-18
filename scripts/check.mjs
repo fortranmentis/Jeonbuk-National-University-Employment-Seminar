@@ -10,7 +10,7 @@ if(slides.slice(0,-1).reduce((sum,s)=>sum+s.seconds,0)!==3000)throw Error('Expec
 if(slides.at(-1).seconds!==600)throw Error('Expected 10-minute Q&A');
 const assets = new Set(['favicon.svg']);
 for(const s of slides){
- if(!s.title||!s.chapter||!s.notes)throw Error('Missing slide content');
+ if(!s.title||!s.chapter)throw Error('Missing slide content');
  if(s.image){if(!s.alt)throw Error('Image alt required');assets.add(s.image);}
  if(s.video){if(!s.alt)throw Error('Video label required');assets.add(s.video);if(s.poster)assets.add(s.poster);}
  for(const [src,alt]of s.images??[]){if(!alt)throw Error('Image alt required');assets.add(src);}
