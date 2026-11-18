@@ -182,3 +182,10 @@
 .ais-case:has(.processing-detail-button) .case-input ol{line-height:1.5}
 .ais-case .case-comparison video{display:block;width:28cqw;height:30cqw;object-fit:contain;background:#fff}
 .research img[src$="resume-example.webp"]{border:1px solid var(--line);box-shadow:0 .6cqw 2cqw rgba(0,0,0,.12);border-radius:.4cqw}
+/* Larger AIS time-lapse: figure spans the full slide height on the right */
+.ais-case .case-comparison{grid-template-columns:1fr 3cqw 38cqw}
+.ais-case h2,.ais-case .case-metrics{max-width:48cqw}
+.ais-case .case-comparison figure{position:absolute;right:3cqw;top:3.6cqw;bottom:2cqw;width:40cqw;display:flex;flex-direction:column;align-items:center;z-index:1}
+.ais-case .case-comparison figure figcaption{text-align:center}
+.ais-case .case-comparison video{flex:1;min-height:0;width:100%;height:auto}
+.ais-case .slide-chapter{z-index:2}
