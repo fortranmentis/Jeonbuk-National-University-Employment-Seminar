@@ -180,3 +180,4 @@
 .processing-detail-button{display:inline;padding:0;text-align:left;font:inherit;line-height:inherit;color:inherit;border-bottom:1px dotted #8daac4}
 .comparison .flow-detail-button span{font-size:1.68cqw}
 .ais-case:has(.processing-detail-button) .case-input ol{line-height:1.5}
+.ais-case .case-comparison video{display:block;width:28cqw;height:30cqw;object-fit:contain;background:#fff}
