@@ -275,15 +275,36 @@
   font-size: 1.15cqw;
 }
 #image-dialog {
-  width: max-content;
-  max-width: calc(100vw - 24px);
-  max-height: 96dvh;
-  padding: 16px 20px;
+  width: min(960px, calc(100vw - 12px));
+  max-width: none;
+  max-height: calc(100dvh - 12px);
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+#image-dialog-scroll {
+  max-height: calc(100dvh - 14px);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+#image-dialog-scroll:focus-visible {
+  outline-offset: -3px;
+}
+.image-dialog-close {
+  position: absolute;
+  z-index: 1;
+  top: 6px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fff;
+  font-size: 26px;
+  line-height: 1;
 }
 #image-dialog-preview {
   display: block;
-  width: auto;
-  max-width: 100%;
-  max-height: 84dvh;
-  margin: 12px auto 0;
+  width: 100%;
+  height: auto;
 }

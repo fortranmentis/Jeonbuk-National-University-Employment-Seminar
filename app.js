@@ -135,6 +135,7 @@
     fullImage.src = preview.src;
     fullImage.alt = preview.alt;
     open($('image-dialog'));
+    $('image-dialog-scroll').scrollTop = 0;
   }));
   for (const id of ['tool-dialog', 'image-dialog']) {
     $(id).addEventListener('cancel', event => {
