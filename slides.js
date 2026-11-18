@@ -26,47 +26,6 @@ const seminarContent = [
     "seconds": 30
   },
   {
-    "title": "오늘의 이야기",
-    "layout": "agenda",
-    "chapter": "목차",
-    "items": [
-      [
-        "01",
-        "나의 출발점"
-      ],
-      [
-        "02",
-        "빅데이터 실무"
-      ],
-      [
-        "03",
-        "빅데이터 시작해보기"
-      ],
-      [
-        "04",
-        "AI 활용과 프로젝트"
-      ],
-      [
-        "05",
-        "회사 소개와 채용"
-      ],
-      [
-        "06",
-        "취업 준비와 실행"
-      ],
-      [
-        "07",
-        "마무리"
-      ],
-      [
-        "08",
-        "질의응답"
-      ]
-    ],
-    "notes": "오늘 다룰 챕터를 순서대로 안내합니다.",
-    "seconds": 30
-  },
-  {
     "title": "저도 이 캠퍼스의\n학생이었습니다",
     "layout": "photo",
     "chapter": "나의 출발점",
@@ -1496,7 +1455,7 @@ const seminarContent = [
       ]
     ],
     "notes": "사기업·공공기관·공무원 가운데 관심 경로를 정하고 실제 공고를 기준으로 개인 일정을 만듭니다. 어학·NCS·PSAT·기사 등을 모두 동시에 준비하거나 8주 안에 전부 끝내자는 계획이 아닙니다. 공무원 시험 준비가 우선이라면 분석 프로젝트보다 시험 학습에 시간을 더 배분할 수 있습니다. R&D 희망자는 대학원·연구실 상담도 계획에 넣습니다. 포트폴리오 경험 목록은 먼저 넓게 정리하고 대표 사례를 선정합니다. 화면에서 자료·출처로 옮긴 안내: 8주는 방향과 습관을 만드는 시작입니다 · 자격 취득·합격을 보장하는 일정이 아닙니다",
-    "seconds": 100,
+    "seconds": 130,
     "footer": "이번 주: 관심 공고 3개와 내 경험 목록부터 시작하세요",
     "caption": "NCS·PSAT·GSAT 등은 매일 조금씩 풀며 문제 유형과 시간 감각을 익혀보세요."
   },
@@ -1541,15 +1500,20 @@ const seminarContent = [
   }
 ];
 
-// Reuse the opening agenda and highlight the chapter about to begin.
-const agenda = seminarContent.find(slide => slide.layout === 'agenda');
+// Build the transition agendas from the chapters in presentation order.
+const introChapter = seminarContent[0].chapter;
+const chapters = [...new Set(seminarContent.map(slide => slide.chapter))]
+  .filter(chapter => chapter !== introChapter);
+const agendaItems = chapters.map((chapter, index) => [String(index + 1).padStart(2, '0'), chapter]);
 window.SEMINAR_SLIDES = seminarContent.flatMap((slide, index) => {
-  const entersChapter = agenda.items.some(([, name]) => name === slide.chapter)
+  const entersChapter = slide.chapter !== introChapter
     && seminarContent[index - 1]?.chapter !== slide.chapter;
   if (!entersChapter) return [slide];
 
   return [{
-    ...agenda,
+    title: '오늘의 이야기',
+    layout: 'agenda',
+    items: agendaItems,
     chapter: slide.chapter,
     agendaHighlight: slide.chapter,
     notes: `다음 챕터: ${slide.chapter}`,

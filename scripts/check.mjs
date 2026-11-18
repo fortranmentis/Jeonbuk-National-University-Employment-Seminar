@@ -5,7 +5,7 @@ const root = path.resolve(import.meta.dirname,'..');
 const ctx = {window:{}};
 vm.runInNewContext(fs.readFileSync(path.join(root,'slides.js'),'utf8'),ctx);
 const slides = ctx.window.SEMINAR_SLIDES;
-if(slides.length!==48)throw Error('Expected 48 slides');
+if(slides.length!==47)throw Error('Expected 47 slides');
 if(slides.slice(0,-1).reduce((sum,s)=>sum+s.seconds,0)!==3000)throw Error('Expected 50-minute talk');
 if(slides.at(-1).seconds!==600)throw Error('Expected 10-minute Q&A');
 const assets = new Set(['favicon.svg']);
