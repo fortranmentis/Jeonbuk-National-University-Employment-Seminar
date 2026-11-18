@@ -3,7 +3,7 @@
   const slides = window.SEMINAR_SLIDES;
   const $ = id => document.getElementById(id);
   const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  let index = 0, reading = false, running = false, started = 0, total = 0, lastFocus;
+  let index = 0, reading = false, lastFocus;
   const dialogs = ['overview', 'help', 'resources', 'tool-dialog', 'image-dialog'].map($);
   const lines = value => escape(value).replace(/\n/g, '<br>');
   const toolDetails = [];
@@ -181,11 +181,6 @@
   let pointer;
   $('stage').addEventListener('pointerdown',event=>{if(event.pointerType==='touch'&&!event.target.closest('a,button'))pointer={x:event.clientX,y:event.clientY};});
   $('stage').addEventListener('pointerup',event=>{if(!pointer||reading)return;const dx=event.clientX-pointer.x,dy=event.clientY-pointer.y;pointer=null;if(Math.abs(dx)>80&&Math.abs(dx)>Math.abs(dy)*1.5)show(index+(dx<0?1:-1));});
-  function format(ms) { const seconds=Math.floor(ms/1000);return `${String(Math.floor(seconds/60)).padStart(2,'0')}:${String(seconds%60).padStart(2,'0')}`; }
-  function clock() {const ms=total+(running?Date.now()-started:0);$('elapsed').textContent=format(ms);document.querySelector('.timer').classList.toggle('overrun',ms>=50*60*1000);}
-  $('timer-button').addEventListener('click',()=>{if(running){total+=Date.now()-started;running=false;}else{started=Date.now();running=true;}$('timer-button').textContent=running?'일시정지':'타이머 계속';$('timer-button').setAttribute('aria-label',running?'발표 타이머 일시정지':'발표 타이머 계속');clock();});
-  $('timer-reset').addEventListener('click',()=>{total=0;running=false;started=0;$('timer-button').textContent='타이머 시작';$('timer-button').setAttribute('aria-label','발표 타이머 시작');clock();});
-  setInterval(clock,500);
   window.addEventListener('hashchange',parseHash);
   show(0,false,false);parseHash();
 })();
