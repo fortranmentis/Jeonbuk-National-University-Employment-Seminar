@@ -1079,7 +1079,6 @@ const seminarContent = [
     "title": "결과물 완성은 기본,\n프로젝트를 운영하는 힘까지",
     "layout": "flow",
     "chapter": "AI 활용과 프로젝트",
-    "eyebrow": "PM · AI 에이전트 · AX",
     "subtitle": "대학교에서의 과제는 범위·일정·소통·검증을 연습할 기회입니다",
     "items": [
       [
